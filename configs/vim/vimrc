@@ -111,11 +111,6 @@ nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 set showmode
 
-" tabstop:          Width of tab character
-" softtabstop:      Fine tunes the amount of white space to be added
-" shiftwidth        Determines the amount of whitespace to add in normal mode
-" expandtab:        When on uses space instead of tabs
-
 " Set command to help save file that need root privilage
 cmap w!! :w !sudo tee >/dev/null %
 :au FileChangedShell * e!
