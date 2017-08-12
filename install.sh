@@ -18,4 +18,7 @@
 
 directory=`pwd`
 
-
+install_vim()
+{
+  apt install vim
+}
