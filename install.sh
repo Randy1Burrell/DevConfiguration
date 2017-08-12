@@ -15,3 +15,7 @@
 ## Usage: Change mode of file to be executable and run as ##
 ##        root.                                           ##
 ############################################################
+
+directory=`pwd`
+
+
