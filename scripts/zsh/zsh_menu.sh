@@ -34,15 +34,19 @@ zsh_menu()
                 echo "## [ANY OTHER KEY]--NO"
                 echo "**********************************************"
                 read opt
-                    if [ $opt = "y" ] || [ $opt = "Y" ]
-                    then
-                        curr_dir=`pwd`
-                        conf_file="${curr_dir}//configs//zsh//zshrc"
-                    fi
+                if [ $opt = "y" ] || [ $opt = "Y" ]
+                then
+                    curr_dir=`pwd`
+                    conf_file="${curr_dir}//configs//zsh//zshrc"
+                    zsh_replace "$conf_file"
+                    zsh_op_mesg $?
+                fi
                 ;;
             2)
                 curr_dir=`pwd`
                 conf_file="${curr_dir}//configs//vim//vimrc"
+                zsh_append "$conf_file"
+                zsh_op_mesg $?
                 ;;
             3)
                 ;;
