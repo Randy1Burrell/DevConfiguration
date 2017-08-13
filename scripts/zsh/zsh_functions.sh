@@ -130,7 +130,7 @@ zsh_replace()
 }
 
 ## Name: zsh_append
-## Desc: append zshrc to old vimrc
+## Desc: append zshrc to old zshrc
 ## Param: path to zshrc to append
 ## Return: integer
 zsh_append()
