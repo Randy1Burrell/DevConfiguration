@@ -10,24 +10,24 @@
 ##         below.
 
 ## Generic error function
-vim_op_mesg()
+zsh_op_mesg()
 {
     case $1 in
         0)
-            echo ".vimrc has been replaced!!!"
+            echo ".zshrc has been replaced!!!"
             sleep 1
             return
             ;;
         1)
-            echo "New .vimrc file was not supplied"
+            echo "New .zshrc file was not supplied"
             sleep 1
             return
             ;;
         2)
             echo "Something went wrong!!!"
             echo "Please ensure that the configs folder is present"
-            echo "Also ensure configs folder contains a vim folder"
-            echo "And vim folder includes a vimrc file within it"
+            echo "Also ensure configs folder contains a zsh folder"
+            echo "And zsh folder includes a zshrc file within it"
             sleep 10
             return
             ;;
@@ -60,7 +60,14 @@ vim_op_mesg()
     esac
 }
 
-##
+## Name: generic_zsh_actions
+## Desc: Does an action based on parameters passed
+## Param: string -- path to new zshrc
+##        integer -- what action to perform
+##        1 -- replace zshrc
+##        2 -- merge zshrc
+##        3 -- append zshrc
+## Return: integer
 generic_zsh_actions()
 {
     if [ "$#" -lt "2" ]
@@ -110,3 +117,26 @@ generic_zsh_actions()
             ;;
     esac
 }
+
+## Name: zsh_replace
+## Desc: replaces .zshrc with the one given
+## Param: string -- path to new zshrc
+## Return: integer
+zsh_replace()
+{
+    ## Call generic zsh actions and return its return value
+    generic_zsh_actions $1 1
+    return $?
+}
+
+## Name: zsh_append
+## Desc: append zshrc to old vimrc
+## Param: path to zshrc to append
+## Return: integer
+zsh_append()
+{
+    ## Call generic zsh actions and return its return value
+    generic_zsh_actions $1 2
+    return $?
+}
+
