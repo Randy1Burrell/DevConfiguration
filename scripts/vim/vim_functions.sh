@@ -15,6 +15,23 @@
 ## Return: integer
 vim_replace()
 {
+    if [ $# -lt 1 ]
+    then
+        echo "Usage:"
+        echo "vim_replace {path to .vimrc to replace with old .vimrc with}"
+        sleep 3
+        return 1
+    fi
+
+    if [ ! -f $1 ]
+    then
+        echo "File supplied does not exists"
+        echo "Please give path to a real file"
+        sleep 2
+        return 1
+    else
+        cat $1 > "${HOME}//.vimrc"
+    fi
     return 0
 }
 
