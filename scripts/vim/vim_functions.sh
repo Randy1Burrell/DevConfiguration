@@ -10,7 +10,7 @@
 ##         below.
 
 ## Generic error function
-vim_error()
+vim_op_mesg()
 {
     case $1 in
         0)
@@ -95,14 +95,16 @@ generic_vim_actions()
             ;;
         2)
             dir=`pwd` ## Get the present working directory
+            echo "Working directory $dir"
             mkdir "$dir//tmp" ## Define a temporary directory here
             conf="$dir//tmp//vimrc.diff" ## Define temporary confile path
             ## Write difference between our vimrc file and present user's confile to temporary file
             diff $1 "$vimrc" | grep "<" | sed 's/^<//g' > "$conf"
+            cat $conf
             ## Append the difference to current users vimrc
             cat $conf >> $vimrc
             ## Removing tmp directory
-            rm -R "$dir//tmp"
+            rm -Rfv "$dir//tmp"
             return 5
             ;;
         3)
@@ -134,7 +136,8 @@ vim_replace()
 vim_append()
 {
     ## Call generic vim actions and return its return value
-    return generic_vim_actions $1 2
+    generic_vim_actions $1 2
+    return $?
 }
 
 ## Name: select_vim_install
