@@ -30,7 +30,7 @@ main_menu()
         clear
         echo "Welcome to development configuration's interactive shell"
         echo "Please select from the options below"
-        echo "1 -- install all configuration"
+        echo "1 -- install and configure all programs for developement"
         echo "2 -- install and configure vim"
         echo "3 -- install and configure zsh"
         echo "4 -- install and configure tmux"
@@ -52,6 +52,11 @@ main_menu()
                 ;;
             5)
                 return 0
+                ;;
+            *)
+                echo "Options are 1-5"
+                sleep 1
+                ;;
         esac
     done
 }
