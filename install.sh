@@ -19,13 +19,6 @@
 . ./scripts/vim/vim_functions.sh
 . ./scripts/vim/vim_menu.sh
 
-directory=`pwd`
-
-install_vim()
-{
-  apt install vim
-}
-
 main_menu()
 {
     while :
