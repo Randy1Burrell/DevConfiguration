@@ -6,6 +6,8 @@
 ## Interactive menu to configure vim
 vim_menu()
 {
+    ## Loop keeps user at menu until the select
+    ## an option in the menu
     while :
     do
         clear
@@ -26,17 +28,27 @@ vim_menu()
                 conf_file="${curr_dir}//configs//vim//vimrc"
                 vim_replace "$conf_file"
                 exit_val=$?
-                if [ $exit_val -eq 0 ]
-                then
-                    echo ".vimrc has been replaced!!!"
-                    sleep 1
-                else
-                    echo "Something went wrong!!!"
-                    echo "Please ensure that the configs folder is present"
-                    echo "Also ensure configs folder contains a vim folder"
-                    echo "And vim folder includes a vimrc file within it"
-                    sleep 10
-                fi
+                case $exit_val in
+                    0)
+                        echo ".vimrc has been replaced!!!"
+                        sleep 1
+                        ;;
+                    1)
+                        echo "New .vimrc file was not supplied"
+                        sleep 1
+                        ;;
+                    2)
+                        echo "Something went wrong!!!"
+                        echo "Please ensure that the configs folder is present"
+                        echo "Also ensure configs folder contains a vim folder"
+                        echo "And vim folder includes a vimrc file within it"
+                        sleep 10
+                        ;;
+                    *)
+                        echo "Something went wrong!!!"
+                        echo "Wait a minute then try again"
+                        ;;
+                esac
                 ;;
             2)
                 vim_append
