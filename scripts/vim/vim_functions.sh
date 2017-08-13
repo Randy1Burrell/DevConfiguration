@@ -28,7 +28,7 @@ vim_replace()
         echo "File supplied does not exists"
         echo "Please give path to a real file"
         sleep 2
-        return 1
+        return 2
     else
         cat $1 > "${HOME}//.vimrc"
     fi
