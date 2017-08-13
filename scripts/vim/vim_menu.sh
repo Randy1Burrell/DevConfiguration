@@ -27,31 +27,13 @@ vim_menu()
                 curr_dir=`pwd`
                 conf_file="${curr_dir}//configs//vim//vimrc"
                 vim_replace "$conf_file"
-                exit_val=$?
-                case $exit_val in
-                    0)
-                        echo ".vimrc has been replaced!!!"
-                        sleep 1
-                        ;;
-                    1)
-                        echo "New .vimrc file was not supplied"
-                        sleep 1
-                        ;;
-                    2)
-                        echo "Something went wrong!!!"
-                        echo "Please ensure that the configs folder is present"
-                        echo "Also ensure configs folder contains a vim folder"
-                        echo "And vim folder includes a vimrc file within it"
-                        sleep 10
-                        ;;
-                    *)
-                        echo "Something went wrong!!!"
-                        echo "Wait a minute then try again"
-                        ;;
-                esac
+                vim_error $?
                 ;;
             2)
-                vim_append
+                curr_dir=`pwd`
+                conf_file="${curr_dir}//configs//vim//vimrc"
+                vim_append $conf_file
+                vim_error $?
                 ;;
             3)
                 select_vim_install
