@@ -18,6 +18,8 @@
 ## Import function file
 . ./scripts/vim/vim_functions.sh
 . ./scripts/vim/vim_menu.sh
+. ./scripts/zsh/zsh_functions.sh
+. ./scripts/zsh/zsh_menu.sh
 
 main_menu()
 {
@@ -47,6 +49,9 @@ main_menu()
                 tmux_menu
                 ;;
             5)
+                echo "Good Bye!!"
+                sleep 2
+                clear
                 return 0
                 ;;
             *)
