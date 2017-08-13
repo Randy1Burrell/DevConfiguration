@@ -15,6 +15,7 @@
 ## Usage: Change mode of file to be executable and run as ##
 ##        root.                                           ##
 ############################################################
+. ./scripts/vim/vim_menu.sh
 
 directory=`pwd`
 
