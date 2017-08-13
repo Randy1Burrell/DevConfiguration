@@ -4,3 +4,6 @@
 ## zsh menu function displays
 
 ## Interactive menu to configure zsh
+zsh_menu()
+{
+}
