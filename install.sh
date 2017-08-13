@@ -15,6 +15,8 @@
 ## Usage: Change mode of file to be executable and run as ##
 ##        root.                                           ##
 ############################################################
+## Import function file
+. ./scripts/vim/vim_functions.sh
 . ./scripts/vim/vim_menu.sh
 
 directory=`pwd`

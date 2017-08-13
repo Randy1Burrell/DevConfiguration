@@ -2,6 +2,8 @@
 ## This file should not be called independently
 ## To be imported and used in another program
 ## vim menu function displays
+
+## Interactive menu to configure vim
 vim_menu()
 {
     while :
@@ -20,12 +22,30 @@ vim_menu()
 
         case $vim_option in
             1)
+                curr_dir=`pwd`
+                conf_file="${curr_dir}//configs//vim//vimrc"
+                vim_replace "$conf_file"
+                exit_val=$?
+                if [ $exit_val -eq 0 ]
+                then
+                    echo ".vimrc has been replaced!!!"
+                    sleep 1
+                else
+                    echo "Something went wrong!!!"
+                    echo "Please ensure that the configs folder is present"
+                    echo "Also ensure configs folder contains a vim folder"
+                    echo "And vim folder includes a vimrc file within it"
+                    sleep 10
+                fi
                 ;;
             2)
+                vim_append
                 ;;
             3)
+                select_vim_install
                 ;;
             4)
+                configure_vim
                 ;;
             5)
                 return 0
@@ -35,7 +55,7 @@ vim_menu()
                 exit
                 ;;
             *)
-                echo "Options are 1-5"
+                echo "Options are 1-6"
                 sleep 1
                 ;;
         esac
