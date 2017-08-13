@@ -27,13 +27,13 @@ vim_menu()
                 curr_dir=`pwd`
                 conf_file="${curr_dir}//configs//vim//vimrc"
                 vim_replace "$conf_file"
-                vim_error $?
+                vim_op_mesg $?
                 ;;
             2)
                 curr_dir=`pwd`
                 conf_file="${curr_dir}//configs//vim//vimrc"
                 vim_append $conf_file
-                vim_error $?
+                vim_op_mesg $?
                 ;;
             3)
                 select_vim_install
