@@ -1,10 +1,47 @@
 ## Author: Randy Burrell
 ## Date Created: 2017/08/12
 ##
-## @desc: this file contains functions that can
+## Desc: this file contains functions that can
 ##        be used to help configure vim.
 ##
-## @usage: To call any function within this file
+## Usage: To call any function within this file
 ##         import this script in your main shell
 ##         script and call any function defined
 ##         below.
+
+## Name: vim_replace
+## Desc: replaces .vimrc with the one given
+## Param: string -- path to new vimrc
+## Return: integer
+vim_replace()
+{
+    return 0
+}
+
+## Name: vim_append
+## Desc: append vimrc to old vimrc
+## Param: path to vimrc to append
+## Return: integer
+vim_append()
+{
+    return 0
+}
+
+## Name: select_vim_install
+## Desc: Gives a menu with different vim editors
+##       to select from for installation
+## Param: ---
+## Return: integer
+select_vim_install()
+{
+    return 0
+}
+
+## Name: configure_vim
+## Desc: Configures vim based on script definitions
+## Params: ---
+## Return: integer
+configure_vim()
+{
+    return 0
+}
