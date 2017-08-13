@@ -44,7 +44,7 @@ zsh_menu()
                 ;;
             2)
                 curr_dir=`pwd`
-                conf_file="${curr_dir}//configs//vim//vimrc"
+                conf_file="${curr_dir}//configs//zsh//zshrc"
                 zsh_append "$conf_file"
                 zsh_op_mesg $?
                 ;;
