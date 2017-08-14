@@ -120,19 +120,22 @@ generic_zsh_actions()
             return 6
             ;;
         4)
+            ## Update system
+            echo "y" | sudo apt update
             ## Install zsh
-            sudo apt install zsh
+            echo "y" | sudo apt install zsh
             ## Change default shell to zsh
             chsh -s $(which zsh)
             return 7
             ;;
         5)
-            sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+            echo "No password" | sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
             return 8
             ;;
         6)
             ## Path to aliases
-            cp -r "$1" "${HOME}/.zsh"
+            mkdir -p "${HOME}//.zsh"
+            cp -r "$1" "${HOME}//.zsh//"
             return 9
             ;;
         *)
@@ -191,12 +194,10 @@ oh_my_zsh()
 zsh_config()
 {
     ## Create zshrc file in home directory
-    echo "Befor generic call"
     zsh_replace $1
     ## print message to user's screen
     zsh_op_mesg $?
     ## Call generic zsh actions and return its return value
-
     generic_zsh_actions $1 4
     ## configure zsh_alias
     dir=`pwd`
