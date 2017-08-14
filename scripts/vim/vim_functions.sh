@@ -96,15 +96,15 @@ generic_vim_actions()
         2)
             dir=`pwd` ## Get the present working directory
             echo "Working directory $dir"
-            mkdir "$dir//tmp" ## Define a temporary directory here
-            conf="$dir//tmp//vimrc.diff" ## Define temporary confile path
+            mkdir "${dir}//tmp" ## Define a temporary directory here
+            conf="${dir}//tmp//vimrc.diff" ## Define temporary confile path
             ## Write difference between our vimrc file and present user's confile to temporary file
             diff $1 "$vimrc" | grep "<" | sed 's/^<//g' > "$conf"
             cat $conf
             ## Append the difference to current users vimrc
             cat $conf >> $vimrc
             ## Removing tmp directory
-            rm -Rfv "$dir//tmp"
+            rm -Rfv "${dir}//tmp"
             return 5
             ;;
         3)
