@@ -49,6 +49,9 @@ zsh_menu()
                 zsh_op_mesg $?
                 ;;
             3)
+                curr_dir=`pwd`
+                conf_file="${curr_dir}//configs//zsh//zshrc"
+                zsh_config $conf_file
                 ;;
             4)
                 ;;
