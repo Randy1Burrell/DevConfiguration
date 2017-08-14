@@ -54,6 +54,9 @@ zsh_menu()
                 zsh_config $conf_file
                 ;;
             4)
+                curr_dir=`pwd`
+                conf_file="${curr_dir}//configs//zsh//zshrc"
+                oh_my_zsh "$conf_file"
                 ;;
             5)
                 return 0
