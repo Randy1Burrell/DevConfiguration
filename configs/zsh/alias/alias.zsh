@@ -13,6 +13,7 @@ alias tms='tmuxinator start'
 alias tml='tmuxinator list'
 alias tme='tmuxinator edit'
 alias tmc='tmuxinator copy'
+alias tmd='tmuxinator delete'
 
 # convenience aliases for editing configs
 alias ev='vim ~/.vimrc'
