@@ -65,13 +65,13 @@ export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-	export EDITOR='vim'
+    export EDITOR='vim'
 else
    export EDITOR='mvim'
 fi
 
 # Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+export ARCHFLAGS="-arch x86_64"
 
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
@@ -84,22 +84,21 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+source ~/.zsh/alias.zsh
 
+# CLI configurations
 export TERM=xterm-256color
-export EDITOR=vim
 export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR
 
-source ~/.zsh/alias.zsh
-
-export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin:$HOME/.vimpkg/bin:$HOME/.custom_script/:$HOME/.ddns/:
-export WORKON_HOME=$HOME/.virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
-
-
-
+# Path for executables
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+export PATH=$PATH:/usr/local/games:/snap/bin:/usr/lib/jvm/java-8-oracle/bin
+export PATH=$PATH:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
+export PATH=$PATH:$HOME/.vimpkg/bin:$HOME/.custom_script/:$HOME/.ddns/:
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
-# Source path for tmuxinator
-# source ~/.bin/tmuxinator.zsh
+# Virtualenv Wrapppers Configurations
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
