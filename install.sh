@@ -21,6 +21,17 @@
 . ./scripts/zsh/zsh_functions.sh
 . ./scripts/zsh/zsh_menu.sh
 
+configure_all()
+{
+    dir=`pwd`
+    vimrc="${dir}//config/vim/vimrc"
+    zsh_conf_file="${dir}//configs//zsh//zshrc"
+    zsh_config $zsh_conf_file
+    sudo apt install tmux
+    vim_replace $vimrc
+    vim_op_mesg $?
+}
+
 main_menu()
 {
     while :
