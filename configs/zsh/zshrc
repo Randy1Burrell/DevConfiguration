@@ -52,7 +52,11 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git django vim-interaction vi-mode virtualenv python pylint ubuntu git-remote-branch laravel grunt jsontools tmux pep8 branch jira postgres apache2-macports mysql-macports vundle frontend-search sudo bundler tmux-cssh github ruby)
+plugins=(git django vim-interaction vi-mode virtualenv\
+         python pylint ubuntu git-remote-branch laravel\
+         grunt jsontools tmux pep8 branch jira postgres\
+         apache2-macports mysql-macports vundle\
+         frontend-search sudo bundler tmux-cssh github ruby)
 
 source $ZSH/oh-my-zsh.sh
 
