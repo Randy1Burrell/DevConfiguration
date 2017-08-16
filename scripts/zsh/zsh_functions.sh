@@ -126,7 +126,7 @@ generic_zsh_actions()
             ## Install zsh
             echo "y" | install zsh
             ## Change default shell to zsh
-            chsh -s $(which zsh)
+            sudo chsh -s $(which zsh)
             return 7
             ;;
         5)
