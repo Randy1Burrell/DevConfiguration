@@ -80,7 +80,7 @@ get_vim_vundle()
     fi
 }
 
-configure_all()
+get_vim_pathogen()
 {
     if [ ! -d "${HOME}//.vim//autoload" ]
     then
@@ -91,8 +91,17 @@ configure_all()
       mkdir -p "${HOME}//.vim//autoload"
       `curl -LSso ${HOME}//.vim//autoload//pathogen.vim https://tpo.pe//pathogen.vim`
     fi
+}
+
+configure_all()
+{
+    ## Get vundle
+    get_vim_vundle
+    ## Get pathogen
+    get_vim_pathogen
+
     if [ ! -d "${HOME}//.vim//colors" ]
-    then
+    thenq
       if [ exists_vim_colorschemes -eq 0 ]
       then
         link_vim_colors
