@@ -24,7 +24,7 @@
 configure_all()
 {
     dir=`pwd`
-    vimrc="${dir}//config//vim//vimrc"
+    vimrc="${dir}//configs//vim//vimrc"
     zsh_conf_file="${dir}//configs//zsh//zshrc"
     vim_replace $vimrc
     vim_op_mesg $?
