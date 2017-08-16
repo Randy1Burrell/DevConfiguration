@@ -173,6 +173,13 @@ get_vim_vundle()
     fi
 }
 
+## Name: get_vim_pathogen
+## Desc: Creates autoload and bundle director
+##       in current user's .vim directory if
+##       it doesn't already exists and downloads
+##       pathogen.vim in autoload directory
+## Params: ---
+## Return: ---
 get_vim_pathogen()
 {
     if [ ! -d "${HOME}//.vim//autoload" ]
