@@ -39,6 +39,19 @@ configure_all()
       mkdir -p "${HOME}//.vim//autoload"
       `curl -LSso ${HOME}//.vim//autoload//pathogen.vim https://tpo.pe//pathogen.vim`
     fi
+    if [ ! -d "${HOME}//.vim//colors" ]
+    then
+      if [ -d "${HOME}//.vim/bundle/vim-colorschemes/colors" ]
+      then
+        ln -s "${HOME}//.vim//bundle//vim-colorschemes//colors"\
+        "${HOME}//.vim//colors"
+      else
+        `git clone https://github.com/flazz/vim-colorschemes.git\
+         ${HOME}//.vim//bundle//Vundle.vim/vim-colorschemes`
+        ln -s "${HOME}//.vim//bundle//vim-colorschemes//colors"\
+        "${HOME}//.vim//colors"
+      fi
+    fi
     vim_replace $vimrc
     vim_op_mesg $?
     zsh_config $zsh_conf_file
