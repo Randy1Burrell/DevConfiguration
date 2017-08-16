@@ -20,6 +20,7 @@
 . ./scripts/vim/vim_menu.sh
 . ./scripts/zsh/zsh_functions.sh
 . ./scripts/zsh/zsh_menu.sh
+. ./scripts/tmux/tmux_functions.sh
 
 is_package_installed()
 {
@@ -64,7 +65,7 @@ configure_all()
     ## Configure zsh for current user
     zsh_config $zsh_conf_file
     ## Install tmux
-    install tmux
+    tmux_install
 }
 
 main_menu()
