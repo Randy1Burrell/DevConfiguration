@@ -43,16 +43,45 @@ link_vim_colors()
     "${HOME}//.vim//colors"
 }
 
-dir=`pwd`
-vimrc="${dir}//configs//vim//vimrc"
-zsh_conf_file="${dir}//configs//zsh//zshrc"
+is_package_installed()
+{
+    dpkg -s $1 &> /dev/null
 
-configure_all()
+    if [ $? -eq 0 ]; then
+      return 0
+    else
+      return 1
+    fi
+}
+
+install()
+{
+    if [ `is_package_installed $1` -eq 1 ]
+    then
+      sudo apt install $1
+    else
+      echo "Will not install $1"
+      echo "$1 is already installed"
+    fi
+}
+
+init_var()
+{
+    dir=`pwd`
+    vimrc="${dir}//configs//vim//vimrc"
+    zsh_conf_file="${dir}//configs//zsh//zshrc"
+}
+
+get_vim_vundle()
 {
     if [ ! -d "${HOME}//.vim//bundle//Vundle.vim" ]
     then
       vundle=`git clone https://github.com//VundleVim//Vundle.vim.git ${HOME}//.vim//bundle//Vundle.vim`
     fi
+}
+
+configure_all()
+{
     if [ ! -d "${HOME}//.vim//autoload" ]
     then
       if [ ! -d "${HOME}//.vim//bundle" ]
@@ -75,7 +104,7 @@ configure_all()
     vim_replace $vimrc
     vim_op_mesg $?
     zsh_config $zsh_conf_file
-    sudo apt install tmux
+    install tmux
 }
 
 main_menu()
@@ -121,6 +150,9 @@ main_menu()
 
 main()
 {
+    ## Initialize variables
+    init_var
+    ## Show main menu
     main_menu
 }
 
