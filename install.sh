@@ -42,11 +42,13 @@ link_vim_colors()
     ln -s "${HOME}//.vim//bundle//vim-colorschemes//colors"\
     "${HOME}//.vim//colors"
 }
+
+dir=`pwd`
+vimrc="${dir}//configs//vim//vimrc"
+zsh_conf_file="${dir}//configs//zsh//zshrc"
+
 configure_all()
 {
-    dir=`pwd`
-    vimrc="${dir}//configs//vim//vimrc"
-    zsh_conf_file="${dir}//configs//zsh//zshrc"
     if [ ! -d "${HOME}//.vim//bundle//Vundle.vim" ]
     then
       vundle=`git clone https://github.com//VundleVim//Vundle.vim.git ${HOME}//.vim//bundle//Vundle.vim`
@@ -69,8 +71,6 @@ configure_all()
         link_vim_colors
         get_vim_colorschemes
       fi
-    else
-
     fi
     vim_replace $vimrc
     vim_op_mesg $?
