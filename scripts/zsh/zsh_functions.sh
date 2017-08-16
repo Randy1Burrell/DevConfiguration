@@ -122,7 +122,7 @@ generic_zsh_actions()
         4)
 
             ## Update system
-            echo "y" | install update
+            echo "y" | sudo apt update
             ## Install zsh
             echo "y" | install zsh
             ## Change default shell to zsh
