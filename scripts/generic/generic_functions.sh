@@ -24,6 +24,10 @@ is_package_installed()
     fi
 }
 
+## Name: install
+## Desc: Install packages
+## Params: string -- package name
+## Return: ---
 install()
 {
     if [ `is_package_installed $1` -eq 1 ]
@@ -35,6 +39,10 @@ install()
     fi
 }
 
+## Name: init_var
+## Desc: initializes variables
+## Params: ---
+## Return: ---
 init_var()
 {
     dir=`pwd`
