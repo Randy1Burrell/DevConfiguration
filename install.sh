@@ -21,6 +21,12 @@
 . ./scripts/zsh/zsh_functions.sh
 . ./scripts/zsh/zsh_menu.sh
 
+get_vim_colorschemes()
+{
+    `git clone https://github.com/flazz/vim-colorschemes.git\
+    ${HOME}//.vim//bundle//Vundle.vim/vim-colorschemes`
+}
+
 configure_all()
 {
     dir=`pwd`
@@ -46,11 +52,12 @@ configure_all()
         ln -s "${HOME}//.vim//bundle//vim-colorschemes//colors"\
         "${HOME}//.vim//colors"
       else
-        `git clone https://github.com/flazz/vim-colorschemes.git\
-         ${HOME}//.vim//bundle//Vundle.vim/vim-colorschemes`
+        get_vim_colorschemes
         ln -s "${HOME}//.vim//bundle//vim-colorschemes//colors"\
         "${HOME}//.vim//colors"
       fi
+    else
+
     fi
     vim_replace $vimrc
     vim_op_mesg $?
