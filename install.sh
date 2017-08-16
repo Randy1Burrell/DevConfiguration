@@ -101,7 +101,7 @@ configure_all()
     get_vim_pathogen
 
     if [ ! -d "${HOME}//.vim//colors" ]
-    thenq
+    then
       if [ exists_vim_colorschemes -eq 0 ]
       then
         link_vim_colors
