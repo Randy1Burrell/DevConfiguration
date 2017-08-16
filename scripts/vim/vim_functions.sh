@@ -193,3 +193,38 @@ get_vim_pathogen()
     fi
 }
 
+## Name: get_vim_colorschemes
+## Desc: Clones vim-colorschemes for current vim user
+## Params: ---
+## Return: ---
+get_vim_colorschemes()
+{
+    `git clone https://github.com/flazz/vim-colorschemes.git\
+    ${HOME}//.vim//bundle//Vundle.vim/vim-colorschemes`
+}
+
+## Name: exists_vim_colorschemes
+## Desc: Checks if vim-colorschemes already exists
+## Params: ---
+## Return: ---
+exits_vim_colorschemes()
+{
+    if [ -d "${HOME}//.vim/bundle/vim-colorschemes/colors" ]
+    then
+      return 0
+    else
+      return 1
+    fi
+}
+
+## Name: link_vim_colors
+## Desc: links vim colorschemes/colors to current
+##       user's .vim/colors directory
+## Params: ---
+## return: ---
+link_vim_colors()
+{
+    ln -s "${HOME}//.vim//bundle//vim-colorschemes//colors"\
+    "${HOME}//.vim//colors"
+}
+
