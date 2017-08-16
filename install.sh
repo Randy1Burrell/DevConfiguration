@@ -26,6 +26,10 @@ configure_all()
     dir=`pwd`
     vimrc="${dir}//configs//vim//vimrc"
     zsh_conf_file="${dir}//configs//zsh//zshrc"
+    if [ -! -d "${HOME}//.vim//bundle//Vundle.vim" ]
+    then
+      git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    fi
     vim_replace $vimrc
     vim_op_mesg $?
     zsh_config $zsh_conf_file
