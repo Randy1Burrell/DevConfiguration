@@ -9,6 +9,10 @@
 ##         import this script in your main shell
 ##         script and call any function defined
 
+## Name: is_package_installed
+## Desc: Checks is a package has already been installed
+## Params: string -- package name
+## Return: integer
 is_package_installed()
 {
     dpkg -s $1 &> /dev/null
@@ -54,5 +58,4 @@ configure_all()
     ## Install tmux
     tmux_install
 }
-
 
