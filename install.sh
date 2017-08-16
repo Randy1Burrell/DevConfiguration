@@ -27,6 +27,16 @@ get_vim_colorschemes()
     ${HOME}//.vim//bundle//Vundle.vim/vim-colorschemes`
 }
 
+exits_vim_colorschemes()
+{
+    if [ -d "${HOME}//.vim/bundle/vim-colorschemes/colors" ]
+    then
+      return 0
+    else
+      return 1
+    fi
+}
+
 configure_all()
 {
     dir=`pwd`
@@ -47,7 +57,7 @@ configure_all()
     fi
     if [ ! -d "${HOME}//.vim//colors" ]
     then
-      if [ -d "${HOME}//.vim/bundle/vim-colorschemes/colors" ]
+      if [ exists_vim_colorschemes -eq 0 ]
       then
         ln -s "${HOME}//.vim//bundle//vim-colorschemes//colors"\
         "${HOME}//.vim//colors"
