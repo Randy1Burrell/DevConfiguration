@@ -24,7 +24,7 @@
 configure_all()
 {
     dir=`pwd`
-    vimrc="${dir}//config/vim/vimrc"
+    vimrc="${dir}//config//vim//vimrc"
     zsh_conf_file="${dir}//configs//zsh//zshrc"
     zsh_config $zsh_conf_file
     sudo apt install tmux
