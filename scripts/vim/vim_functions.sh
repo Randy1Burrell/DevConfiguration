@@ -159,3 +159,30 @@ configure_vim()
 {
     return 0
 }
+
+## Name: get_vim_vundle
+## Desc: Clone Vundle.vim to current user's
+##       .vim/bundle/Vundle.vim directory
+## Params: ---
+## Return: ---
+get_vim_vundle()
+{
+    if [ ! -d "${HOME}//.vim//bundle//Vundle.vim" ]
+    then
+      vundle=`git clone https://github.com//VundleVim//Vundle.vim.git ${HOME}//.vim//bundle//Vundle.vim`
+    fi
+}
+
+get_vim_pathogen()
+{
+    if [ ! -d "${HOME}//.vim//autoload" ]
+    then
+      if [ ! -d "${HOME}//.vim//bundle" ]
+      then
+        mkdir -p "${HOME}//.vim/bundle"
+      fi
+      mkdir -p "${HOME}//.vim//autoload"
+      `curl -LSso ${HOME}//.vim//autoload//pathogen.vim https://tpo.pe//pathogen.vim`
+    fi
+}
+
