@@ -30,6 +30,13 @@ configure_all()
     then
       vundle=`git clone https://github.com//VundleVim//Vundle.vim.git ${HOME}//.vim//bundle//Vundle.vim`
     fi
+    if [ ! -d "${HOME}//.vim//autoload"]
+      if [ ! -d "${HOME}//.vim//bundle" ]
+        mkdir -p "${HOME}//.vim/bundle"
+      fi
+      mkdir -p "${HOME}//.vim//autoload"
+      `curl -LSso ${HOME}//.vim//autoload//pathogen.vim https:////tpo.pe//pathogen.vim`
+    fi
     vim_replace $vimrc
     vim_op_mesg $?
     zsh_config $zsh_conf_file
