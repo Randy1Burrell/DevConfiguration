@@ -19,3 +19,12 @@ tmux_install()
 {
   install tmux
 }
+
+## Name: config_tmuxinator
+## Desc: Configures installs and configures tmuxinator
+## Params: ---
+## Return: ---
+config_tmuxinator()
+{
+  install ruby
+}
