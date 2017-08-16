@@ -56,20 +56,14 @@ configure_all()
     get_vim_vundle
     ## Get pathogen
     get_vim_pathogen
-
-    if [ ! -d "${HOME}//.vim//colors" ]
-    then
-      if [ exists_vim_colorschemes -eq 0 ]
-      then
-        link_vim_colors
-      else
-        link_vim_colors
-        get_vim_colorschemes
-      fi
-    fi
+    ## Get vim colors
+    do_colors
+    ## Replace .vimrc for curren user
     vim_replace $vimrc
     vim_op_mesg $?
+    ## Configure zsh for current user
     zsh_config $zsh_conf_file
+    ## Install tmux
     install tmux
 }
 
