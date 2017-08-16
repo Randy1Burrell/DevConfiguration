@@ -30,7 +30,7 @@ configure_all()
     then
       vundle=`git clone https://github.com//VundleVim//Vundle.vim.git ${HOME}//.vim//bundle//Vundle.vim`
     fi
-    if [ ! -d "${HOME}//.vim//autoload"]
+    if [ ! -d "${HOME}//.vim//autoload" ]
     then
       if [ ! -d "${HOME}//.vim//bundle" ]
       then
