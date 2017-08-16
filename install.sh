@@ -37,7 +37,7 @@ configure_all()
         mkdir -p "${HOME}//.vim/bundle"
       fi
       mkdir -p "${HOME}//.vim//autoload"
-      `curl -LSso ${HOME}//.vim//autoload//pathogen.vim https:////tpo.pe//pathogen.vim`
+      `curl -LSso ${HOME}//.vim//autoload//pathogen.vim https://tpo.pe//pathogen.vim`
     fi
     vim_replace $vimrc
     vim_op_mesg $?
