@@ -21,28 +21,6 @@
 . ./scripts/zsh/zsh_functions.sh
 . ./scripts/zsh/zsh_menu.sh
 
-get_vim_colorschemes()
-{
-    `git clone https://github.com/flazz/vim-colorschemes.git\
-    ${HOME}//.vim//bundle//Vundle.vim/vim-colorschemes`
-}
-
-exits_vim_colorschemes()
-{
-    if [ -d "${HOME}//.vim/bundle/vim-colorschemes/colors" ]
-    then
-      return 0
-    else
-      return 1
-    fi
-}
-
-link_vim_colors()
-{
-    ln -s "${HOME}//.vim//bundle//vim-colorschemes//colors"\
-    "${HOME}//.vim//colors"
-}
-
 is_package_installed()
 {
     dpkg -s $1 &> /dev/null
@@ -70,27 +48,6 @@ init_var()
     dir=`pwd`
     vimrc="${dir}//configs//vim//vimrc"
     zsh_conf_file="${dir}//configs//zsh//zshrc"
-}
-
-get_vim_vundle()
-{
-    if [ ! -d "${HOME}//.vim//bundle//Vundle.vim" ]
-    then
-      vundle=`git clone https://github.com//VundleVim//Vundle.vim.git ${HOME}//.vim//bundle//Vundle.vim`
-    fi
-}
-
-get_vim_pathogen()
-{
-    if [ ! -d "${HOME}//.vim//autoload" ]
-    then
-      if [ ! -d "${HOME}//.vim//bundle" ]
-      then
-        mkdir -p "${HOME}//.vim/bundle"
-      fi
-      mkdir -p "${HOME}//.vim//autoload"
-      `curl -LSso ${HOME}//.vim//autoload//pathogen.vim https://tpo.pe//pathogen.vim`
-    fi
 }
 
 configure_all()
