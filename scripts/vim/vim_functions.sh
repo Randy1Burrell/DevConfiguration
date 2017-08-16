@@ -228,3 +228,20 @@ link_vim_colors()
     "${HOME}//.vim//colors"
 }
 
+## Name: do_colors
+## Desc: get and link colorschemes for vim users
+## Params: ---
+## Return: ----
+do_colors()
+{
+    if [ ! -d "${HOME}//.vim//colors" ]
+    then
+      if [ exists_vim_colorschemes -eq 0 ]
+      then
+        link_vim_colors
+      else
+        link_vim_colors
+        get_vim_colorschemes
+      fi
+    fi
+}
