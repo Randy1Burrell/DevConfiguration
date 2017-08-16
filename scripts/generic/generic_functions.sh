@@ -50,6 +50,10 @@ init_var()
     zsh_conf_file="${dir}//configs//zsh//zshrc"
 }
 
+## Name: Configure_all
+## Desc: Completely comfigures you dev env
+## Params: ---
+## Return: ---
 configure_all()
 {
     ## Get vundle
