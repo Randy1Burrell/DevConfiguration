@@ -117,10 +117,8 @@ rvm_manager()
       sudo apt update
     fi
     ## If rvm is not installed; install it
-    res=is_package_installed "rvm"
-    if [ $res -ne 0 ]; then
-      install rvm
-    fi
+    install rvm
+    install rubygems
   else
     rvm_gpg
   fi
