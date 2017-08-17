@@ -35,7 +35,7 @@ config_tmuxinator()
 ##       in configs/tmux/tmux.conf
 ## Params: ---
 ## Return: ---
-replcae_tmux_conf()
+replace_tmux_conf()
 {
   cat "${dir}//configs//tmux//tmux.conf" \
   > "${HOME}//.tmux.conf"
