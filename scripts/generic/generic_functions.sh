@@ -32,7 +32,7 @@ install()
 {
     if [ `is_package_installed $1` -eq 1 ]
     then
-      sudo apt install $1
+      'Y' | sudo apt install $1
     else
       echo "Will not install $1"
       echo "$1 is already installed"
@@ -82,7 +82,7 @@ rvm_gpg()
     fi
   fi
   ## Check if rvm is already installed
-  `rvm`
+  res=`rvm`
   res=$?
   if [ $res -ne 0 ]; then
     \curl -sSL https://get.rvm.io | bash -s stable --ruby
@@ -104,7 +104,8 @@ rvm_manager()
   if [ $res -eq 0 ]; then
     ## If software-properties-common has not been
     ## installed; then install it
-    res=is_package_installed "software-properties-common"
+    is_package_installed "software-properties-common"
+    res=$?
     if [ $res -ne 0 ]; then
       install software-properties-common
     fi
