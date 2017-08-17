@@ -99,7 +99,7 @@ rvm_manager()
 {
   ## If OS is Ubuntu the install rvm from ppa
   ## else install rvm for other OSes
-  `uname -a | grep -i ubuntu`
+  uname -a | grep -i ubuntu
   res=$?
   if [ res -eq 0 ]; then
     ## If software-properties-common has not been
