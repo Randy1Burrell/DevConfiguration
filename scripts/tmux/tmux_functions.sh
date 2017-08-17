@@ -26,7 +26,6 @@ tmux_install()
 ## Return: ---
 config_tmuxinator()
 {
-  rvm_manager
   gem install tmuxinator
 }
 

@@ -140,6 +140,8 @@ configure_all()
     vim_op_mesg $?
     ## Configure zsh for current user
     zsh_config $zsh_conf_file
+    ## Install rvm
+    rvm_manager
     ## Install and configure tmux and tmuxinator
     tmux_config_all
 }
