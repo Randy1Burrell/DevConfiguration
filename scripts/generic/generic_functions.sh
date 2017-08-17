@@ -69,12 +69,12 @@ rvm_gpg()
 {
   ## Check if gpg keys already exist and add them
   ## if they don't
-  `gpg -k 409B6B1796C275462A1703113804BB82D39DC0E3`
+  res=`gpg -k 409B6B1796C275462A1703113804BB82D39DC0E3`
   res=$?
-  if [ res -ne 0 ]; then
-    `gpg -k 7D2BAF1CF37B13E2069D6956105BD0E739499BDB`
+  if [ $res -ne 0 ]; then
+    res=`gpg -k 7D2BAF1CF37B13E2069D6956105BD0E739499BDB`
     res=$?
-    if [ res -ne 0 ]; then
+    if [ $res -ne 0 ]; then
       gpg --keyserver hkp://keys.gnupg.net \
       --recv-keys \
       409B6B1796C275462A1703113804BB82D39DC0E3 \
@@ -84,7 +84,7 @@ rvm_gpg()
   ## Check if rvm is already installed
   `rvm`
   res=$?
-  if [ res -ne 0 ]; then
+  if [ $res -ne 0 ]; then
     \curl -sSL https://get.rvm.io | bash -s stable --ruby
   fi
 }
@@ -99,13 +99,13 @@ rvm_manager()
 {
   ## If OS is Ubuntu the install rvm from ppa
   ## else install rvm for other OSes
-  uname -a | grep -i ubuntu
+  res=`uname -a | grep -i ubuntu`
   res=$?
-  if [ res -eq 0 ]; then
+  if [ $res -eq 0 ]; then
     ## If software-properties-common has not been
     ## installed; then install it
     res=is_package_installed "software-properties-common"
-    if [ res -ne 0 ]; then
+    if [ $res -ne 0 ]; then
       install software-properties-common
     fi
     ## If ppa:rael-gc/rvm was not added; add it
@@ -115,7 +115,7 @@ rvm_manager()
     fi
     ## If rvm is not installed; install it
     res=is_package_installed "rvm"
-    if [ res -ne 0 ]; then
+    if [ $res -ne 0 ]; then
       install rvm
     fi
   else
