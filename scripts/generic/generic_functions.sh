@@ -110,7 +110,9 @@ rvm_manager()
       install software-properties-common
     fi
     ## If ppa:rael-gc/rvm was not added; add it
-    if [ check_ppa -ne 0 ]; then
+    check_ppa "rael-gc/rvm"
+    res="$?"
+    if [ $res -ne 0 ]; then
       sudo apt-add-repository -y ppa:rael-gc/rvm
       sudo apt update
     fi
