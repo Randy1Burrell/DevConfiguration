@@ -26,5 +26,31 @@ tmux_install()
 ## Return: ---
 config_tmuxinator()
 {
-  install ruby
+  rvm_manager
+  gem install tmuxinator
+}
+
+## Name: replace_tmux_conf
+## Desc: Replaces current user's .tmux.conf with conf
+##       in configs/tmux/tmux.conf
+## Params: ---
+## Return: ---
+replcae_tmux_conf()
+{
+  cat "${dir}//configs//tmux//tmux.conf" \
+  > "${HOME}//.tmux.conf"
+}
+
+## Name: tmux_config_all
+## Desc: configures tmux's and tmuxinator's options
+## Params: ---
+## Return: ---
+tmux_config_all()
+{
+  tmux_install
+  config_tmuxinator
+  replace_tmux_conf
+  if [ $? -eq 0 ]; then
+    echo "tmux has been installed and configured"
+  fi
 }
