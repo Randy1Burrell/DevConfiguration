@@ -122,7 +122,7 @@ generic_zsh_actions()
         4)
 
             ## Update system
-            echo "y" | sudo apt update
+            sudo apt update
             ## Install zsh
             install zsh
             ## Change default shell to zsh
@@ -135,8 +135,11 @@ generic_zsh_actions()
             ;;
         6)
             ## Path to aliases
-            mkdir -p "${HOME}//.zsh"
-            cp -r "$1" "${HOME}//.zsh//"
+            zsh_dir="${HOME}//.zsh"
+            if [ ! -d $zsh_dir ]; then
+              mkdir -p "$zsh_dir"
+            fi
+            cp -r "$1" "$zsh_dir"
             return 9
             ;;
         *)
