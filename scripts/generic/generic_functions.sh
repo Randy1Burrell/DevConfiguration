@@ -34,7 +34,7 @@ install()
     res=$?
     if [ $res -eq 1 ]
     then
-      'Y' | sudo apt install $1
+      echo 'Y' | sudo apt install $1
     else
       echo "Will not install $1"
       echo "$1 is already installed"
