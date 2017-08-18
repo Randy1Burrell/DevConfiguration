@@ -15,9 +15,9 @@
 ## Return: integer
 is_package_installed()
 {
-    dpkg -s $1 &> /dev/null
-
-    if [ $? -eq 0 ]; then
+    dpkg -l | grep $1
+    res=$?
+    if [ $res -eq 0 ]; then
       return 0
     else
       return 1
