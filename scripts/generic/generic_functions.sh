@@ -30,7 +30,9 @@ is_package_installed()
 ## Return: ---
 install()
 {
-    if [ `is_package_installed $1` -eq 1 ]
+    res=`is_package_installed $1`
+    res=$?
+    if [ $res -eq 1 ]
     then
       'Y' | sudo apt install $1
     else
@@ -89,6 +91,28 @@ rvm_gpg()
   fi
 }
 
+## Name: install_dependencies
+## Desc: Installs dependencies for development environment
+## Params: ---
+## Return: ---
+install_dependencies()
+{
+  install git-core
+  install curl
+  install zlib1g-dev
+  install build-essential
+  install libssl-dev
+  install libreadline-dev
+  install libyaml-dev
+  install libsqlite3-dev
+  install sqlite3
+  install libxml2-dev
+  install libxslt1-dev
+  install libcurl4-openssl-dev
+  install python-software-properties
+  install libffi-dev
+}
+
 ## Name: rvm_manager
 ## Desc: Manages rvm installation process depending
 ##       on OS type. Example if OS is ubuntu use
@@ -118,10 +142,10 @@ rvm_manager()
     fi
     ## If rvm is not installed; install it
     install rvm
-    install rubygems
   else
     rvm_gpg
   fi
+  install_dependencies
 }
 
 ## Name: Configure_all
