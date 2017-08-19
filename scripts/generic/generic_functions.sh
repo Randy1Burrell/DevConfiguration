@@ -187,5 +187,6 @@ configure_all()
     rvm_manager
     ## Install and configure tmux and tmuxinator
     tmux_config_all
+    source "${HOME}//.zshrc"
 }
 
