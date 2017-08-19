@@ -111,9 +111,14 @@ install_dependencies()
   install libcurl4-openssl-dev
   install python-software-properties
   install libffi-dev
+  install python-pip
+  install python-dev
+  install build-essential
+  ## Install ruby version 2.4
   rvm install 2.4
   gem install bundler
   gem install rails
+
   check_ppa "chris-lea/node.js"
   res="$?"
   if [ res -ne 0 ]; then
@@ -121,6 +126,9 @@ install_dependencies()
   fi
   sudo apt update
   install nodejs
+  sudo pip install --upgrade pip
+  sudo pip install virtualenv
+  sudo pip install virtualenvwrapper
 }
 
 ## Name: rvm_manager
