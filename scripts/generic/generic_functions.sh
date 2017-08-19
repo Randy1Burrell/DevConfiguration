@@ -112,6 +112,15 @@ install_dependencies()
   install python-software-properties
   install libffi-dev
   rvm install 2.4
+  gem install bundler
+  gem install rails
+  check_ppa "chris-lea/node.js"
+  res="$?"
+  if [ res -ne 0 ]; then
+    sudo add-apt-repository ppa:chris-lea/node.js
+  fi
+  sudo apt update
+  install nodejs
 }
 
 ## Name: rvm_manager
