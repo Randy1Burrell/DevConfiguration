@@ -215,6 +215,7 @@ exits_vim_colorschemes()
     else
       return 1
     fi
+
 }
 
 ## Name: link_vim_colors

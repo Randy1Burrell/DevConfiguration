@@ -188,5 +188,7 @@ configure_all()
     ## Install and configure tmux and tmuxinator
     tmux_config_all
     source "${HOME}//.zshrc"
+    sudo apt autoremove
+    sudo apt autoclean
 }
 
