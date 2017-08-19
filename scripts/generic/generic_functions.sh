@@ -111,6 +111,7 @@ install_dependencies()
   install libcurl4-openssl-dev
   install python-software-properties
   install libffi-dev
+  rvm install 2.4
 }
 
 ## Name: rvm_manager
