@@ -38,6 +38,7 @@ main_selection_menu()
 ## Return: ---
 vim_menu()
 {
+  ## Displays a menu and store user's selection in variable res
   res=$(whiptail --title "Vim Configuration" \
         --clear --cancel-button "Exit" \
         --backtitle "vim Editor"\
@@ -47,7 +48,9 @@ vim_menu()
         "install" "and configure a different vi" \
         "configure" "vi however I like" \
         "Go back" "to the previus menu" 3>&1 1>&2 2>&3)
+  ## Determine if the user selected ok or exit
   if [ $? -eq 0 ]; then
+    ## Do the user's selection
     case $res in
       replace)
         vim_replace
