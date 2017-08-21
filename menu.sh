@@ -80,3 +80,22 @@ vim_menu()
     esac
   fi
 }
+
+## Name: zsh_menu
+## Desc: Displays an interactive menu for installing and configuring
+##       zsh
+## Params: ---
+## Return: ---
+zsh_menu()
+{
+  res=$(whiptail --title "Zsh Configuration" \
+        --clear --cancel-button "Exit" \
+        --backtitle "z shell" \
+        --menu "Select an option" 25 60 15 \
+        "replace" "your current .zshrc with ours" \
+        "merge" "your current .zshrc with ours" \
+        "install" "zsh and change your shel to zsh" \
+        "zsh_themes" "install and configure OH_MY_ZSH" \
+        "change" "your shell to zsh" \
+        "Go back" "to the previous menu" 3>&1 1>&2 2>&3)
+}
