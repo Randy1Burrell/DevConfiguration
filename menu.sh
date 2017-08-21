@@ -31,6 +31,11 @@ main_selection_menu()
   fi
 }
 
+## Name: vim_menu
+## Desc: Displays an interactive menu for installing
+##       and configuring vi/vim
+## Params: ---
+## Return: ---
 vim_menu()
 {
   res=$(whiptail --title "Vim Configuration" \
