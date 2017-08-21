@@ -111,6 +111,7 @@ zsh_menu()
       "change")
         ;;
       "Go back")
+        main_selection_menu
         ;;
       *)
         ;;
