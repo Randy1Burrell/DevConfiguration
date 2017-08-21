@@ -7,6 +7,7 @@
 ## Return: ---
 main_selection_menu()
 {
+  ## Displays a menu and store user's selection in variable res
   res=$(whiptail --title "Development Environment" \
         --clear --cancel-button "Exit" \
         --backtitle "Created by Randy Burrell" \
@@ -15,7 +16,9 @@ main_selection_menu()
         "vim" "Install and Configure" \
         "zsh" "Install and configure" \
         "tmux" "Install and configure" 3>&1 1>&2 2>&3)
+  ## Determine if the user selected ok or exit
   if [ $? -eq 0 ]; then
+    ## Do the user's selection
     case $res in
       all)
         configure_all
