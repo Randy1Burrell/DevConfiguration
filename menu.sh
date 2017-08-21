@@ -13,7 +13,7 @@ main_selection_menu()
   if [ $? -eq 0 ]; then
     case $res in
       all)
-        configure
+        configure_all
         ;;
       vim)
         vim_menu
@@ -28,11 +28,39 @@ main_selection_menu()
         echo "Incorrect Selection!!!"
         ;;
     esac
-  else
-    echo "Good Bye"
-    sleep 2
-    clear
-    return 0
   fi
 }
 
+vim_menu()
+{
+  res=$(whiptail --title "Vim Configuration" \
+        --clear --cancel-button "Exit" \
+        --backtitle "vim Editor"\
+        --menu "Select an option" 25 60 15 \
+        "replace" "your current .vimrc with ours" \
+        "merge" "your current .vimrc with ours" \
+        "install" "and configure a different vi" \
+        "configure" "vi however I like" \
+        "Go back" "to the previus menu" 3>&1 1>&2 2>&3)
+  if [ $? -eq 0 ]; then
+    case $res in
+      replace)
+        vim_replace
+        ;;
+      merge)
+        vim_merg
+        ;;
+      install)
+        install_vim_menu
+        ;;
+      configure)
+        configure_vim
+        ;;
+      "Go back")
+        main_selection_menu
+        ;;
+      *)
+        ;;
+    esac
+  fi
+}
