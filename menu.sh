@@ -1,5 +1,10 @@
 #!/bin/bash
-
+## Name: main_selection_menu
+## Desc: Desplays an interactive menu used to install
+##       and configure a development environment for
+##       vi/vim, zsh, and tmux
+## Params: ---
+## Return: ---
 main_selection_menu()
 {
   res=$(whiptail --title "Development Environment" \
