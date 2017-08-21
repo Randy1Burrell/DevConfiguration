@@ -20,16 +20,16 @@ main_selection_menu()
   if [ $? -eq 0 ]; then
     ## Do the user's selection
     case $res in
-      all)
+      "all")
         configure_all
         ;;
-      vim)
+      "vim")
         vim_menu
         ;;
-      zsh)
+      "zsh")
         zsh_menu
         ;;
-      tmux)
+      "tmux")
         tmux_menu
         ;;
       *)
@@ -60,16 +60,16 @@ vim_menu()
   if [ $? -eq 0 ]; then
     ## Do the user's selection
     case $res in
-      replace)
+      "replace")
         vim_replace
         ;;
-      merge)
+      "merge")
         vim_merg
         ;;
-      install)
+      "install")
         install_vim_menu
         ;;
-      configure)
+      "configure")
         configure_vim
         ;;
       "Go back")
@@ -98,4 +98,22 @@ zsh_menu()
         "zsh_themes" "install and configure OH_MY_ZSH" \
         "change" "your shell to zsh" \
         "Go back" "to the previous menu" 3>&1 1>&2 2>&3)
+  if [ $? -eq 0 ]; then
+    case $res in
+      "replace")
+        ;;
+      "merge")
+        ;;
+      "install")
+        ;;
+      "zsh_themes")
+        ;;
+      "change")
+        ;;
+      "Go back")
+        ;;
+      *)
+        ;;
+    esac
+  fi
 }
