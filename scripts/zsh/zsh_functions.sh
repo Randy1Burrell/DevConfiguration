@@ -154,9 +154,8 @@ generic_zsh_actions()
 ## Return: integer
 zsh_replace()
 {
-    ## Call generic zsh actions and return its return value
-    generic_zsh_actions $1 1
-    return $?
+  cat $zshrc > "${HOME}//.zshrc"
+  return $?
 }
 
 ## Name: zsh_append
