@@ -70,7 +70,13 @@ vim_menu()
         fi
         ;;
       "merge")
-        vim_merg
+        vim_merge
+        res=$?
+        if [ "$res" -eq 0 ]; then
+          user_message "Your .vimrc has been merged with ours\nEnjoy!!"
+        else
+          user_message "Something went wrong"
+        fi
         ;;
       "install")
         install_vim_menu
