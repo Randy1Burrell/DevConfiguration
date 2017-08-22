@@ -193,10 +193,13 @@ tmux_menu()
       "tmuxinator")
         ;;
       "Go back")
+        main_selection_menu
         ;;
       *)
     esac
+    tmux_menu
   fi
+  fairwell_greeting
 }
 
 ## Name: user_message
