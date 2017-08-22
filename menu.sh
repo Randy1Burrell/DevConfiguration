@@ -83,6 +83,11 @@ vim_menu()
         ;;
       "configure")
         configure_vim
+        if [ "$res" -eq 0 ]; then
+          user_message "Vi has been configured"
+        else
+          user_message "Something went wrong"
+        fi
         ;;
       "Go back")
         main_selection_menu
