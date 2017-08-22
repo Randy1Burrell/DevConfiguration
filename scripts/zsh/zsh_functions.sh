@@ -59,8 +59,6 @@ zsh_config()
 {
   ## Create zshrc file in home directory
   zsh_replace $1
-  ## print message to user's screen
-  zsh_op_mesg $?
   ## Call generic zsh actions and return its return value
   generic_zsh_actions $1 4
   ## configure zsh_alias
@@ -72,4 +70,22 @@ zsh_config()
   oh_my_zsh $1
   ## Returns exit code
   return $?
+}
+
+## Name: change_to_zsh
+## Desc: Changes default login shell to z shell
+## Params: ---
+## Return: integer
+change_to_zsh()
+{
+  is_package_installed "zsh"
+  res=$?
+  if [ $res -ne 0 ]; then
+    return $res
+  fi
+  if (whiptail --title "Confirmation" --yesno "Are you sure you would like change your default login shell to zsh?" 8 60) then
+    password=$(whiptail --title "Password Dialog" --passwordbox "Please enter your correct password" 10 80 \
+               3>&1 1>&2 2>&3)
+    echo password | sudo -S chsh $(which zsh)
+  fi
 }
