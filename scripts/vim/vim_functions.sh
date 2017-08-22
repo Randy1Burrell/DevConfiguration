@@ -59,7 +59,7 @@ get_vim_vundle()
 {
   if [ ! -d "${HOME}//.vim//bundle//Vundle.vim" ]
   then
-    vundle=`git clone https://github.com//VundleVim//Vundle.vim.git ${HOME}//.vim//bundle//Vundle.vim`
+    vundle=`git clone https://github.com/VundleVim/Vundle.vim.git ${HOME}//.vim//bundle//Vundle.vim`
   fi
   return $?
 }
@@ -80,7 +80,7 @@ get_vim_pathogen()
       mkdir -p "${HOME}//.vim/bundle"
     fi
     mkdir -p "${HOME}//.vim//autoload"
-    `curl -LSso ${HOME}//.vim//autoload//pathogen.vim https://tpo.pe//pathogen.vim`
+    `curl -LSso ${HOME}//.vim//autoload//pathogen.vim https://tpo.pe/pathogen.vim`
   fi
   return $?
 }
