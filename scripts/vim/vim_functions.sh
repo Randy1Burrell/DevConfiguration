@@ -60,15 +60,6 @@ vim_op_mesg()
     esac
 }
 
-## Name: generic_vim_actions
-## Desc: Does an action based on parameters passed
-## Param: string -- path to new vimrc
-##        integer -- what action to perform
-##        1 -- replace vimrc
-##        2 -- merge vimrc
-##        3 -- append vimrc
-## Return: integer
-
 ## Name: vim_replace
 ## Desc: replaces .vimrc with the one given
 ## Param: string -- path to new vimrc
