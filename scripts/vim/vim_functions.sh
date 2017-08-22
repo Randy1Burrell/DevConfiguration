@@ -174,7 +174,7 @@ configure_vim()
 ## Desc: Clone Vundle.vim to current user's
 ##       .vim/bundle/Vundle.vim directory
 ## Params: ---
-## Return: ---
+## Return: integer
 get_vim_vundle()
 {
   if [ ! -d "${HOME}//.vim//bundle//Vundle.vim" ]
@@ -190,7 +190,7 @@ get_vim_vundle()
 ##       it doesn't already exists and downloads
 ##       pathogen.vim in autoload directory
 ## Params: ---
-## Return: ---
+## Return: integer
 get_vim_pathogen()
 {
   if [ ! -d "${HOME}//.vim//autoload" ]
@@ -208,7 +208,7 @@ get_vim_pathogen()
 ## Name: get_vim_colorschemes
 ## Desc: Clones vim-colorschemes for current vim user
 ## Params: ---
-## Return: ---
+## Return: integer
 get_vim_colorschemes()
 {
     `git clone https://github.com/flazz/vim-colorschemes.git\
@@ -219,7 +219,7 @@ get_vim_colorschemes()
 ## Name: exists_vim_colorschemes
 ## Desc: Checks if vim-colorschemes already exists
 ## Params: ---
-## Return: ---
+## Return: integer
 exists_vim_colorschemes()
 {
     if [ -d "${HOME}//.vim/bundle/vim-colorschemes/colors" ]; then
@@ -233,7 +233,7 @@ exists_vim_colorschemes()
 ## Desc: links vim colorschemes/colors to current
 ##       user's .vim/colors directory
 ## Params: ---
-## return: ---
+## return: integer
 link_vim_colors()
 {
     ln -s \
@@ -245,7 +245,7 @@ link_vim_colors()
 ## Name: do_colors
 ## Desc: get and link colorschemes for vim users
 ## Params: ---
-## Return: ----
+## Return: integer
 do_colors()
 {
   if [ ! -d "${HOME}//.vim//colors" ]
