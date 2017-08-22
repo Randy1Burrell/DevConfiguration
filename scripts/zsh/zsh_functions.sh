@@ -47,8 +47,8 @@ zsh_alias()
 ## Return: integer
 oh_my_zsh()
 {
-    generic_zsh_actions $1 5
-    zsh_op_mesg $?
+  echo "No password" | sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+  return $?
 }
 
 ## Name: zsh_config
