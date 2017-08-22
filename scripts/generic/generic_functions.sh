@@ -37,6 +37,7 @@ install()
     echo $password | sudo -S apt install $1
   else
     user_message "$1 Will not be installed\n$1 is already installed on your system"
+    return 1
   fi
 }
 
