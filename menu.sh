@@ -62,6 +62,12 @@ vim_menu()
     case $res in
       "replace")
         vim_replace
+        res=$?
+        if [ "$res" -eq 0 ]; then
+          user_message "Your .vimrc file has been replaced\nEnjoy!!\n:-)"
+        else
+          user_messege "Something went wrong"
+        fi
         ;;
       "merge")
         vim_merg
@@ -78,6 +84,7 @@ vim_menu()
       *)
         ;;
     esac
+    vim_menu
   fi
 }
 
@@ -150,4 +157,18 @@ tmux_menu()
       *)
     esac
   fi
+}
+
+## Name: user_message
+## Desc: Displays message to user
+## Params: string -- message to be displayed to the user
+## Return: ---
+user_message()
+{
+  if [ "$#" -lt 1 ] || [ "$#" -gt 1 ]; then
+    whiptail --title "Error" --msgbox "One message required" 12 60
+  fi
+
+  whiptail --title "Message" --msgbox "$1" 12 60
+  return $?
 }
