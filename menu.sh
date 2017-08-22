@@ -213,21 +213,29 @@ install_vim_menu()
         "vim-tiny" "" \
         "vim-athena" "" \
         "vim-gtk" "" \
-        "vim-nox" "" 3>&1 1>&2 2>&3)
+        "vim-nox" ""\
+        "Go back" "to vi menu" 3>&1 1>&2 2>&3)
   if [ $? -eq 0 ]; then
-    if (whiptail --title "Confirmation" --yesno "Are you sure you would like to install $res?" 8 60) then
-      password=$(whiptail --title "Password Dialog" --passwordbox "Please enter your correct password" 10 60 \
-      3>&1 1>&2 2>&3)
-      install $res
-      if [ $? -eq 0 ]; then
-        user_message "$res was installed!!"
-      elif [ $? -eq 1 ]; then
+    case $res in
+     "Go back")
+        vim_menu
+        ;;
+     *)
+      if (whiptail --title "Confirmation" --yesno "Are you sure you would like to install $res?" 8 60) then
+         password=$(whiptail --title "Password Dialog" --passwordbox "Please enter your correct password" 10 60 \
+        3>&1 1>&2 2>&3)
+        install $res
+        if [ $? -eq 0 ]; then
+          user_message "$res was installed!!"
+        elif [ $? -eq 1 ]; then
+          install_vim_menu
+        else
+          user_message "Soemthing went wrong"
+        fi
         install_vim_menu
-      else
-        user_message "Soemthing went wrong"
       fi
-      install_vim_menu
-    fi
+      ;;
+    esac
   fi
   exit
 }
