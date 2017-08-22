@@ -50,7 +50,7 @@ init_var()
     dir=`pwd`
     password=""
     vimrc="${dir}//configs//vim//vimrc"
-    zsh_conf_file="${dir}//configs//zsh//zshrc"
+    zsh_conf="${dir}//configs//zsh//zshrc"
 }
 
 ## Name: check_ppa
