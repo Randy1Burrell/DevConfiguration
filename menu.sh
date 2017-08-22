@@ -118,3 +118,36 @@ zsh_menu()
     esac
   fi
 }
+
+## Name: tmux_menu
+## Desc: Displays interactive menu for installing and
+##       configuring tmux and its plugins
+## Params: ---
+## Return: ---
+tmux_menu()
+{
+  res=$(whiptail --title "Tmux Configuration" \
+        --clear --cancel-button "Exit" \
+        --backtitle "Tmux" \
+        --menu "Select an option" 25 60 15 \
+        "replace" "your current tmux.conf with ours" \
+        "merge" "your current tmux.conf with ours" \
+        "install" "and configure tmux" \
+        "tmuxinator" "install and configure tmuxinator" \
+        "Go back" "to the previous menu" 3>&1 1>&2 2>&3)
+  if [ $? -eq 0 ]; then
+    case $res in
+      "replace")
+        ;;
+      "merge")
+        ;;
+      "install")
+        ;;
+      "tmuxinator")
+        ;;
+      "Go back")
+        ;;
+      *)
+    esac
+  fi
+}
