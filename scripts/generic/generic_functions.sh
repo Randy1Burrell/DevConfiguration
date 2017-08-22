@@ -30,15 +30,14 @@ is_package_installed()
 ## Return: ---
 install()
 {
-    res=`is_package_installed $1`
-    res=$?
-    if [ $res -eq 1 ]
-    then
-      echo 'Y' | sudo apt install $1
-    else
-      echo "Will not install $1"
-      echo "$1 is already installed"
-    fi
+  res=`is_package_installed $1`
+  res=$?
+  if [ $res -eq 1 ]
+  then
+    echo $password | sudo -S apt install $1
+  else
+    user_message "$1 Will not be installed\n$1 is already installed on your system"
+  fi
 }
 
 ## Name: init_var
@@ -48,6 +47,7 @@ install()
 init_var()
 {
     dir=`pwd`
+    password=""
     vimrc="${dir}//configs//vim//vimrc"
     zsh_conf_file="${dir}//configs//zsh//zshrc"
 }
