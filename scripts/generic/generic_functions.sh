@@ -205,14 +205,13 @@ fairwell_greeting()
   if [ "$#" -gt 0 ]; then
     while [ "$#" -gt 0 ]
     do
-      echo "$1"
+      user_message "$1"
       shift
     done
   else
-    echo "Good Bye!!"
+    user_message "Good Bye!!"
   fi
-  sleep 2
   clear
-  return 0
+  exit
 }
 
