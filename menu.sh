@@ -183,3 +183,32 @@ user_message()
   whiptail --title "Message" --msgbox "$1" 12 60
   return $?
 }
+
+## Name: install_vim_menu
+## Desc: Displays an interactive menu with different vi
+##       for users to choose from
+## Params: ---
+## Return: ---
+install_vim_menu()
+{
+  res=$(whiptail --title "Install Vi" \
+        --clear --cancel-button "Exit" \
+        --backtitle "Vi Installation Menu"\
+        --menu "Choose a vim to be installed" 25 60 15 \
+        "vim" ""\
+        "vim-gnome" "" \
+        "vim-tiny" "" \
+        "vim-athena" "" \
+        "vim-gtk" "" \
+        "vim-nox" "" 3>&1 1>&2 2>&3)
+  if [ $? -eq 0 ]; then
+    if (whiptail --title "Confirmation" --yesno "Are you sure you would like to install $res?" 8 60) then
+      password=$(whiptail --title "Password Dialog" --passwordbox "Please enter your correct password" 10 60 \
+      3>&1 1>&2 2>&3)
+      echo $password | sudo -S apt install $res
+      install_vim_menu
+    fi
+    #install "$res"
+  fi
+  exit
+}
