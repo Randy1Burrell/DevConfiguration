@@ -83,6 +83,7 @@ vim_menu()
         ;;
       "configure")
         configure_vim
+        res=$?
         if [ "$res" -eq 0 ]; then
           user_message "Vi has been configured"
         else
