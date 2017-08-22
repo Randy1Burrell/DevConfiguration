@@ -68,55 +68,6 @@ vim_op_mesg()
 ##        2 -- merge vimrc
 ##        3 -- append vimrc
 ## Return: integer
-generic_vim_actions()
-{
-    if [ "$#" -lt "2" ]
-    then
-        ## Enough arguments not supplied
-        return 1
-    fi
-    if [ ! -f "$1" ]
-    then
-        ## File not found
-        return 2
-    fi
-    if [ "$2" -gt "3" ]
-    then
-        ## Action is invalid
-        return 3
-    fi
-    ## Define user's vim configuration file
-    vimrc="${HOME}//.vimrc"
-    case $2 in
-        1)
-            ## Replace contents on current user's vim config file
-            cat $1 > $vimrc
-            return 0
-            ;;
-        2)
-            dir=`pwd` ## Get the present working directory
-            echo "Working directory $dir"
-            mkdir "${dir}//tmp" ## Define a temporary directory here
-            conf="${dir}//tmp//vimrc.diff" ## Define temporary confile path
-            ## Write difference between our vimrc file and present user's confile to temporary file
-            diff $1 "$vimrc" | grep "<" | sed 's/^<//g' > "$conf"
-            cat $conf
-            ## Append the difference to current users vimrc
-            cat $conf >> $vimrc
-            ## Removing tmp directory
-            rm -Rfv "${dir}//tmp"
-            return 5
-            ;;
-        3)
-            ## Append contents of our vimrc file to current user's
-            cat $1 >> $vimrc
-            return 6
-            ;;
-        *)
-            return 4
-            ;;
-    esac
-}
 
 ## Name: vim_replace
 ## Desc: replaces .vimrc with the one given
