@@ -36,10 +36,10 @@ zsh_merge()
 ## Return: integer
 zsh_alias()
 {
-    ## Give action command to generic_zsh_actions
-    generic_zsh_actions $1 6
-    ## Return exit value of generic_zsh_actions
-    return $?
+  ## Give action command to generic_zsh_actions
+  generic_zsh_actions $1 6
+  ## Return exit value of generic_zsh_actions
+  return $?
 }
 
 ## Name: oh_my_zsh
