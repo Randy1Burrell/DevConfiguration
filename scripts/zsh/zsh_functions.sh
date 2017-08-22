@@ -57,20 +57,19 @@ oh_my_zsh()
 ## Return: integer -- error/success code
 zsh_config()
 {
-    ## Create zshrc file in home directory
-    zsh_replace $1
-    ## print message to user's screen
-    zsh_op_mesg $?
-    ## Call generic zsh actions and return its return value
-    generic_zsh_actions $1 4
-    ## configure zsh_alias
-    dir=`pwd`
-    alias_file="${dir}//configs//zsh/alias//alias.zsh"
-
-    zsh_alias $alias_file
-    zsh_op_mesg $?
-    ## Configure oh my zsh
-    oh_my_zsh $1
-    ## Returns exit code
-    return $?
+  ## Create zshrc file in home directory
+  zsh_replace $1
+  ## print message to user's screen
+  zsh_op_mesg $?
+  ## Call generic zsh actions and return its return value
+  generic_zsh_actions $1 4
+  ## configure zsh_alias
+  dir=`pwd`
+  alias_file="${dir}//configs//zsh/alias//alias.zsh"
+  zsh_alias $alias_file
+  zsh_op_mesg $?
+  ## Configure oh my zsh
+  oh_my_zsh $1
+  ## Returns exit code
+  return $?
 }
