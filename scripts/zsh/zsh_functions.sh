@@ -150,7 +150,7 @@ generic_zsh_actions()
 
 ## Name: zsh_replace
 ## Desc: replaces .zshrc with the one given
-## Param: string -- path to new zshrc
+## Param: ---
 ## Return: integer
 zsh_replace()
 {
@@ -158,15 +158,15 @@ zsh_replace()
   return $?
 }
 
-## Name: zsh_append
-## Desc: append zshrc to old zshrc
-## Param: path to zshrc to append
+## Name: zsh_merge
+## Desc: merge zshrc included in configd/zsh
+##       directory with current user's zshrc
+## Param: ---
 ## Return: integer
-zsh_append()
+zsh_merge()
 {
-    ## Call generic zsh actions and return its return value
-    generic_zsh_actions $1 2
-    return $?
+  cat "$zsh_conf" "${HOME}//.zshrc" | uniq -ui > "${HOME}//.zshrc"
+  return $?
 }
 
 ## Name: zsh alias
