@@ -154,7 +154,7 @@ generic_zsh_actions()
 ## Return: integer
 zsh_replace()
 {
-  cat $zshrc > "${HOME}//.zshrc"
+  cat "$zsh_conf" > "${HOME}//.zshrc"
   return $?
 }
 
