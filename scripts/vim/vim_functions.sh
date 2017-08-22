@@ -128,15 +128,15 @@ vim_replace()
   return $?
 }
 
-## Name: vim_append
-## Desc: append vimrc to old vimrc
-## Param: path to vimrc to append
+## Name: vim_merge
+## Desc: merge your current .vimrc with our .vimrc
+## Param: ---
 ## Return: integer
-vim_append()
+vim_merge()
 {
     ## Call generic vim actions and return its return value
-    generic_vim_actions $1 2
-    return $?
+  cat "$vimrc" "${HOME}//.vimrc" | uniq -ui > "${HOME}//.vimrc"
+  return $?
 }
 
 ## Name: select_vim_install
