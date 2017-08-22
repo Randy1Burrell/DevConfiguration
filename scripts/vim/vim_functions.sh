@@ -134,7 +134,7 @@ vim_replace()
 ## Return: integer
 vim_merge()
 {
-    ## Call generic vim actions and return its return value
+  ## Call generic vim actions and return its return value
   cat "$vimrc" "${HOME}//.vimrc" | uniq -ui > "${HOME}//.vimrc"
   return $?
 }
@@ -146,8 +146,8 @@ vim_merge()
 ## Return: integer
 select_vim_install()
 {
-    ## Does nothing yet
-    return 0
+  ## Does nothing yet
+  return 0
 }
 
 ## Name: configure_vim
@@ -156,7 +156,18 @@ select_vim_install()
 ## Return: integer
 configure_vim()
 {
-    return 0
+  get_vim_vundle
+  res=$?
+  if [ $res -ne 0 ]; then
+    return $res
+  fi
+  get_vim_pathogen
+  res=$?
+  if [ $res -ne 0 ]; then
+    return $res
+  fi
+  do_colors
+  return $?
 }
 
 ## Name: get_vim_vundle
@@ -166,10 +177,11 @@ configure_vim()
 ## Return: ---
 get_vim_vundle()
 {
-    if [ ! -d "${HOME}//.vim//bundle//Vundle.vim" ]
-    then
-      vundle=`git clone https://github.com//VundleVim//Vundle.vim.git ${HOME}//.vim//bundle//Vundle.vim`
-    fi
+  if [ ! -d "${HOME}//.vim//bundle//Vundle.vim" ]
+  then
+    vundle=`git clone https://github.com//VundleVim//Vundle.vim.git ${HOME}//.vim//bundle//Vundle.vim`
+  fi
+  return $?
 }
 
 ## Name: get_vim_pathogen
@@ -181,15 +193,16 @@ get_vim_vundle()
 ## Return: ---
 get_vim_pathogen()
 {
-    if [ ! -d "${HOME}//.vim//autoload" ]
+  if [ ! -d "${HOME}//.vim//autoload" ]
+  then
+    if [ ! -d "${HOME}//.vim//bundle" ]
     then
-      if [ ! -d "${HOME}//.vim//bundle" ]
-      then
-        mkdir -p "${HOME}//.vim/bundle"
-      fi
-      mkdir -p "${HOME}//.vim//autoload"
-      `curl -LSso ${HOME}//.vim//autoload//pathogen.vim https://tpo.pe//pathogen.vim`
+      mkdir -p "${HOME}//.vim/bundle"
     fi
+    mkdir -p "${HOME}//.vim//autoload"
+    `curl -LSso ${HOME}//.vim//autoload//pathogen.vim https://tpo.pe//pathogen.vim`
+  fi
+  return $?
 }
 
 ## Name: get_vim_colorschemes
@@ -200,20 +213,20 @@ get_vim_colorschemes()
 {
     `git clone https://github.com/flazz/vim-colorschemes.git\
     ${HOME}//.vim//bundle//Vundle.vim/vim-colorschemes`
+    return $?
 }
 
 ## Name: exists_vim_colorschemes
 ## Desc: Checks if vim-colorschemes already exists
 ## Params: ---
 ## Return: ---
-exits_vim_colorschemes()
+exists_vim_colorschemes()
 {
     if [ -d "${HOME}//.vim/bundle/vim-colorschemes/colors" ]; then
       return 0
     else
       return 1
     fi
-
 }
 
 ## Name: link_vim_colors
@@ -223,8 +236,10 @@ exits_vim_colorschemes()
 ## return: ---
 link_vim_colors()
 {
-    ln -s "${HOME}//.vim//bundle//vim-colorschemes//colors"\
+    ln -s \
+    "${HOME}//.vim//bundle//Vundle.vim//vim-colorschemes//colors" \
     "${HOME}//.vim//colors"
+  return $?
 }
 
 ## Name: do_colors
@@ -233,16 +248,17 @@ link_vim_colors()
 ## Return: ----
 do_colors()
 {
-    if [ ! -d "${HOME}//.vim//colors" ]
+  if [ ! -d "${HOME}//.vim//colors" ]
+  then
+    exists_vim_colorschemes
+    res="$?"
+    if [ "$res" -eq 0 ]
     then
-      exists_vim_colorschemes
-      res="$?"
-      if [ "$res" -eq 0 ]
-      then
-        link_vim_colors
-      else
-        get_vim_colorschemes
-        link_vim_colors
-      fi
+      link_vim_colors
+    else
+      get_vim_colorschemes
+      link_vim_colors
     fi
+  fi
+  return $?
 }
