@@ -208,8 +208,7 @@ get_vim_colorschemes()
 ## Return: ---
 exits_vim_colorschemes()
 {
-    if [ -d "${HOME}//.vim/bundle/vim-colorschemes/colors" ]
-    then
+    if [ -d "${HOME}//.vim/bundle/vim-colorschemes/colors" ]; then
       return 0
     else
       return 1
@@ -236,12 +235,14 @@ do_colors()
 {
     if [ ! -d "${HOME}//.vim//colors" ]
     then
-      if [ exists_vim_colorschemes -eq 0 ]
+      exists_vim_colorschemes
+      res="$?"
+      if [ "$res" -eq 0 ]
       then
         link_vim_colors
       else
-        link_vim_colors
         get_vim_colorschemes
+        link_vim_colors
       fi
     fi
 }
