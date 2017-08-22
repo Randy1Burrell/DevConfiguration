@@ -192,3 +192,26 @@ configure_all()
     sudo apt autoclean
 }
 
+## Name: fairwell_greeting()
+## Desc: echoes fairwell msg to user
+##       wait for 2 seconds then
+##       clears the screen
+## Params: string message -- default to good bye
+##         if no message is passed
+## Return: integer
+fairwell_greeting()
+{
+  if [ "$#" -gt 0 ]; then
+    while [ "$#" -gt 0 ]
+    do
+      echo "$1"
+      shift
+    done
+  else
+    echo "Good Bye!!"
+  fi
+  sleep 2
+  clear
+  return 0
+}
+
