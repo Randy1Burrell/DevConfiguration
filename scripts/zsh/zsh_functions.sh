@@ -9,69 +9,6 @@
 ##         script and call any function defined
 ##         below.
 
-## Generic error function
-zsh_op_mesg()
-{
-    case $1 in
-        0)
-            echo ".zshrc has been replaced!!!"
-            sleep 1
-            return
-            ;;
-        1)
-            echo "New .zshrc file was not supplied"
-            sleep 1
-            return
-            ;;
-        2)
-            echo "Something went wrong!!!"
-            echo "Please ensure that the configs folder is present"
-            echo "Also ensure configs folder contains a zsh folder"
-            echo "And zsh folder includes a zshrc file within it"
-            sleep 10
-            return
-            ;;
-        3)
-            echo "Invalid action!!!"
-            sleep 1
-            return
-            ;;
-        4)
-            echo "No proper action supplied"
-            sleep 1
-            return
-            ;;
-        5)
-            echo "Files have been merged!! :-)"
-            sleep 1
-            return
-            ;;
-        6)
-            echo "File appended!!! :-)"
-            sleep 1
-            return
-            ;;
-        7)
-            echo "7"
-            sleep 3
-            ;;
-        8)
-            echo "Oh my zsh has been installed"
-            sleep 3
-            ;;
-        9)
-            echo "Copied alias file to home"
-            sleep 5
-            ;;
-        *)
-            echo "Something went wrong!!!"
-            echo "Wait a minute then try again"
-            sleep 2
-            return
-            ;;
-    esac
-}
-
 ## Name: generic_zsh_actions
 ## Desc: Does an action based on parameters passed
 ## Param: string -- path to new zshrc
