@@ -205,15 +205,16 @@ install_vim_menu()
     if (whiptail --title "Confirmation" --yesno "Are you sure you would like to install $res?" 8 60) then
       password=$(whiptail --title "Password Dialog" --passwordbox "Please enter your correct password" 10 60 \
       3>&1 1>&2 2>&3)
-      echo $password | sudo -S apt install $res
+      install $res
       if [ $? -eq 0 ]; then
         user_message "$res was installed!!"
+      elif [ $? -eq 1 ]; then
+        install_vim_menu
       else
-        user_message "Something went wrogn!!"
+        user_message "Soemthing went wrong"
       fi
       install_vim_menu
     fi
-    #install "$res"
   fi
   exit
 }
