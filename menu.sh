@@ -136,8 +136,15 @@ zsh_menu()
         fi
         ;;
       "install")
+        install_zsh_menu
         ;;
       "zsh_themes")
+        oh_my_zsh
+        if [ $? -eq 0 ]; then
+          user_message "OH_MY_ZSH has been installed"
+        else
+          user_message "Sorry!!\nSomething went wrong. :-("
+        fi
         ;;
       "change")
         ;;
@@ -239,4 +246,13 @@ install_vim_menu()
     esac
   fi
   exit
+}
+
+## Name: install_zsh_menu
+## Desc: interactive menu for installing zsh and its dependencies
+## Params: ---
+## Return: ---
+install_zsh_menu()
+{
+  echo "Install zsh"
 }
