@@ -124,9 +124,8 @@ generic_vim_actions()
 ## Return: integer
 vim_replace()
 {
-    ## Call generic vim actions and return its return value
-    generic_vim_actions $1 1
-    return $?
+  cat "$vimrc" > "${HOME}//.vimrc"
+  return $?
 }
 
 ## Name: vim_append
