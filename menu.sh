@@ -119,8 +119,20 @@ zsh_menu()
   if [ $? -eq 0 ]; then
     case $res in
       "replace")
+        zsh_replace
+        if [ $? -eq 0 ]; then
+          user_message ".zshrc has been replaced"
+        else
+          user_message "Sorry!!\nSomething went wrong. :-("
+        fi
         ;;
       "merge")
+        zsh_merge
+        if [ $? -eq 0 ]; then
+          user_message ".zshrc has been merged with ours"
+        else
+          user_message "Sorry!!\nSomething went wrong. :-("
+        fi
         ;;
       "install")
         ;;
@@ -134,6 +146,7 @@ zsh_menu()
       *)
         ;;
     esac
+    zsh_menu
   fi
 }
 
