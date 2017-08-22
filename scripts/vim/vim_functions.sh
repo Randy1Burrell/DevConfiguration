@@ -139,17 +139,6 @@ vim_merge()
   return $?
 }
 
-## Name: select_vim_install
-## Desc: Gives a menu with different vim editors
-##       to select from for installation
-## Param: ---
-## Return: integer
-select_vim_install()
-{
-  ## Does nothing yet
-  return 0
-}
-
 ## Name: configure_vim
 ## Desc: Configures vim based on script definitions
 ## Params: ---
