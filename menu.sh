@@ -265,5 +265,9 @@ install_vim_menu()
 ## Return: ---
 install_zsh_menu()
 {
-  echo "Install zsh"
+  if (whiptail --title "Confirmation" --yesno "Are you would like to install Z-Shell?" 8 60) then
+    password=$(whiptail --title "Password Dialog" --passwordbox "Please enter your correct password" 10 60 \
+               3>&1 1>&2 2>&3)
+    install "zsh"
+  fi
 }
