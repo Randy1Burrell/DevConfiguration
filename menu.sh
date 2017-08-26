@@ -268,6 +268,9 @@ install_zsh_menu()
   if (whiptail --title "Confirmation" --yesno "Are you sure would like to install Z-Shell?" 8 60) then
     password=$(whiptail --title "Password Dialog" --passwordbox "Please enter your correct password" 10 60 \
                3>&1 1>&2 2>&3)
-    install "zsh"
+    res=$?
+    if [ $res -eq 0 ]; then
+      install "zsh"
+    fi
   fi
 }
