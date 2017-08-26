@@ -136,7 +136,7 @@ zsh_menu()
         fi
         ;;
       "install")
-        install_zsh_menu
+        install_zsh
         ;;
       "zsh_themes")
         oh_my_zsh
@@ -263,14 +263,19 @@ install_vim_menu()
 ## Desc: interactive menu for installing zsh and its dependencies
 ## Params: ---
 ## Return: ---
-install_zsh_menu()
+install_zsh()
 {
   if (whiptail --title "Confirmation" --yesno "Are you sure would like to install Z-Shell?" 8 60) then
     password=$(whiptail --title "Password Dialog" --passwordbox "Please enter your correct password" 10 60 \
                3>&1 1>&2 2>&3)
     res=$?
     if [ $res -eq 0 ]; then
+      ## install Z-Shell
       install "zsh"
+      ## Channge default login shell to Z-Shell if user give permission
+      if (whiptail --title "Confirmation" --yesno "Would you like to change your default shell to Z-Shell?" 8 60) then
+        change_to_zsh
+      fi
     fi
   fi
 }
