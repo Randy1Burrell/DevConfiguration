@@ -164,7 +164,6 @@ rvm_manager()
   else
     rvm_gpg
   fi
-  install_dependencies
 }
 
 ## Name: Configure_all
