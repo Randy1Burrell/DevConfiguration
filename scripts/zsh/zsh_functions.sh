@@ -85,7 +85,7 @@ change_to_zsh()
     return $res
   fi
   if [ $SHELL = "/usr/bin/zsh" ]; then
-    user_message "Zsh is already your default login shell"
+   user_message "Zsh is already your default login shell"
     return 2
   fi
 
@@ -94,15 +94,17 @@ change_to_zsh()
                3>&1 1>&2 2>&3)
     echo $password | chsh -s $(which zsh)
   fi
-  if (whiptail --title "Confirmation" --yesno "Would you like to install zsh themes from OH_MY_ZSH?" 8 60) then
-    oh_my_zsh
+  if [ ! -d "$HOME//.oh-my-zh" ]; then
+    if (whiptail --title "Confirmation" --yesno "Would you like to install zsh themes from OH_MY_ZSH?" 8 60) then
+      oh_my_zsh
+    fi
   fi
 
-  if (whiptail --title "Confirmation" --yesno "Some of the OH_MY_ZSH themes depends on RVM.\nThey may not work without RVM.\n\n\tWould you like to install RVM?" 8 60) then
-    rvm_manager
-  fi
-  reload_zsh
+  ## Replace oh-my-zsh .zshrc file
   zsh_replace
+  ## Reload .zshrc
+  reload_zsh
+
   return $?
 }
 
