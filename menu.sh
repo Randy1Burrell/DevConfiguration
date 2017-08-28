@@ -151,8 +151,6 @@ zsh_menu()
         if [ $? -eq 0 ]; then
           user_message "Your default login shell has been changed to zsh"
         elif [ $? -eq 1 ]; then
-          user_message "Zsh is not installed on this system\nPlease install zsh if you want ot use it"
-        else
           user message "Something went wrong! Sorry!!! :-("
         fi
         ;;
