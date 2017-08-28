@@ -81,13 +81,20 @@ change_to_zsh()
   is_package_installed "zsh"
   res=$?
   if [ $res -ne 0 ]; then
+    user_message "Zsh is not installed on this system\nPlease install zsh if you want ot use it"
     return $res
   fi
+  if [ $SHELL = "/usr/bin/zsh" ]; then
+    user_message "Zsh is already your default login shell"
+    return 2
+  fi
+
   if (whiptail --title "Confirmation" --yesno "Are you sure you would like change your default login shell to zsh?" 8 60) then
     password=$(whiptail --title "Password Dialog" --passwordbox "Please enter your correct password" 10 80 \
                3>&1 1>&2 2>&3)
-    echo password | sudo -S chsh $(which zsh)
+    echo $password | chsh -s $(which zsh)
   fi
+  return $?
 }
 
 ## Name: install_zsh
