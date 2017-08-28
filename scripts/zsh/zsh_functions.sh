@@ -94,6 +94,15 @@ change_to_zsh()
                3>&1 1>&2 2>&3)
     echo $password | chsh -s $(which zsh)
   fi
+  if (whiptail --title "Confirmation" --yesno "Would you like to install zsh themes from OH_MY_ZSH?" 8 60) then
+    oh_my_zsh
+  fi
+
+  if (whiptail --title "Confirmation" --yesno "Some of the OH_MY_ZSH themes depends on RVM.\nThey may not work without RVM.\n\n\tWould you like to install RVM?" 8 60) then
+    rvm_manager
+  fi
+  reload_zsh
+  zsh_replace
   return $?
 }
 
@@ -116,4 +125,13 @@ install_zsh()
       fi
     fi
   fi
+}
+
+## Name: reload_zsh
+## Desc: Reloads .zshrc
+## Params: ---
+## Return: ---
+reload_zsh()
+{
+  source "$HOME//.zshrc"
 }
