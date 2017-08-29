@@ -32,7 +32,7 @@ tmux_install()
   fi
   if [ $res -eq 0 ]; then
     if (whiptail --title "Confirmation" --yesno "tmux has been successfully installed\nWould you like to configure you tmux.conf" 8 60) then
-      replace_conf
+      tmux_rm_menu
     fi
   fi
 }
@@ -91,5 +91,37 @@ tmux_config_all()
   replace_tmux_conf
   if [ $? -eq 0 ]; then
     echo "tmux has been installed and configured"
+  fi
+}
+
+## Name: tmux_rm_menu
+## Desc: gives user option to replace or merge
+##       their tmux confile with ours
+##       r in function name = replace
+##       m in function name = merge
+## Params: ---
+## Return: ---
+tmux_rm_menu()
+{
+  res=$(whiptail --title "Tmux Configuration" \
+        --clear --cancel-button "None" \
+        --backtitle "Tmux"\
+        --menu "Select an option" 25 60 15 \
+        "replace" "your current .tmux.conf" \
+        "merge" "your current .tmux.conf with ours" \
+        "none" "I changed my mind" 3>&1 1>&2 2>&3)
+  ## Determine if the user selected ok or exit
+  if [ $? -eq 0 ]; then
+    ## Do the user's selection
+    case $res in
+      "replace")
+        replace_conf
+        ;;
+      "merge")
+        merge_conf
+        ;;
+      "none")
+        ;;
+    esac
   fi
 }
