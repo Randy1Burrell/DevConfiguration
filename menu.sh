@@ -98,6 +98,7 @@ vim_menu()
     esac
     vim_menu
   fi
+  fairwell_greeting
 }
 
 ## Name: zsh_menu
