@@ -57,6 +57,17 @@ replace_conf()
   cat "$tmux_conf" > "$tm_conf"
 }
 
+## Name: merge_conf
+## Desc: Merges current user's .tmux.conf with conf
+##       located in configs/tmux/tmux.conf
+## Params: ---
+## Return: ---
+merge_conf()
+{
+  tm_conf="${HOME}//.tmux.conf"
+  cat "$tmux_conf" "$tm_conf" | uniq -ui  > "$tm_conf"
+}
+
 ## Name: tmux_config_all
 ## Desc: configures tmux's and tmuxinator's options
 ## Params: ---
