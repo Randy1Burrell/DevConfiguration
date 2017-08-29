@@ -24,7 +24,7 @@ tmux_install()
         3>&1 1>&2 2>&3)
     res="$?"
     if [ $res -eq 0 ]; then
-      install "tmux"
+      #install "tmux"
       res="$?"
     else
       return $res
@@ -57,7 +57,7 @@ replace_conf()
   cat "$tmux_conf" > "$tm_conf"
   res="$?"
   if [ $res -eq 0 ]; then
-    user_message "Your  .tmux.conf has been replaced"
+    user_message "Your .tmux.conf has been replaced"
   else
     user_message "Something went wrong while trying to\nreplace your .tmux.conf\nSorry!!! :-("
   fi
