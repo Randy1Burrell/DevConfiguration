@@ -115,7 +115,7 @@ change_to_zsh()
 
   if [ $? -eq 0 ]; then
     user_message "Your default login shell has been changed to zsh"
-  elif [ $? -eq 1 ]; then
+  else
     user message "Something went wrong! Sorry!!! :-("
   fi
   return $?
