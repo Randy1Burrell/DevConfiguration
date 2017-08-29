@@ -72,6 +72,12 @@ merge_conf()
 {
   tm_conf="${HOME}//.tmux.conf"
   cat "$tmux_conf" "$tm_conf" | uniq -ui  > "$tm_conf"
+  res="$?"
+  if [ $res -eq 0 ]; then
+    user_message "We've merged your tmux.conf file with ours!!!"
+  else
+    user_message "Something went wrong while trying to merge our tmux conf files"
+  fi
 }
 
 ## Name: tmux_config_all
