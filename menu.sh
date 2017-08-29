@@ -180,6 +180,7 @@ tmux_menu()
   if [ $? -eq 0 ]; then
     case $res in
       "replace")
+        replace_conf
         ;;
       "merge")
         ;;
