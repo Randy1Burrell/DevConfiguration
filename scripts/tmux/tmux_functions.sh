@@ -55,6 +55,12 @@ replace_conf()
 {
   tm_conf="${HOME}//.tmux.conf"
   cat "$tmux_conf" > "$tm_conf"
+  res="$?"
+  if [ $res -eq 0 ]; then
+    user_message "Your  .tmux.conf has been replaced"
+  else
+    user_message "Something went wrong while trying to\nreplace your .tmux.conf\nSorry!!! :-("
+  fi
 }
 
 ## Name: merge_conf
