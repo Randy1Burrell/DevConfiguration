@@ -51,6 +51,7 @@ init_var()
     password=""
     vimrc="${dir}//configs//vim//vimrc"
     zsh_conf="${dir}//configs//zsh//zshrc"
+    alias_file="${dir}//configs//zsh//alias//alias.zsh"
 }
 
 ## Name: check_ppa
