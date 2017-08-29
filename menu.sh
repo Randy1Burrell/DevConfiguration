@@ -189,6 +189,7 @@ tmux_menu()
         tmux_install
         ;;
       "tmuxinator")
+        config_tmuxinator
         ;;
       "Go back")
         main_selection_menu
