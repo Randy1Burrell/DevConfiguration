@@ -83,13 +83,15 @@ change_to_zsh()
   if [ $res -ne 0 ]; then
     user_message "Zsh is not installed on this system\nPlease install zsh if you want ot use it"
     return $res
+  elif [ $SHELL = "/usr/bin/zsh" ]; then
+    user_message "Your default login shell is already zsh"
+    return $res
   fi
 
   if (whiptail --title "Confirmation" --yesno "Are you sure you would like change your default login shell to zsh?" 8 60) then
-    if [ $password = "" ]; then
-      password=$(whiptail --title "Password Dialog" --passwordbox "Please enter your correct password" 10 80 \
+    password=$(whiptail --title "Password Dialog" --passwordbox "Please enter your correct password" 10 80 \
                3>&1 1>&2 2>&3)
-    fi
+
     echo $password | chsh -s $(which zsh)
   fi
   if [ ! -d "${HOME}//.oh-my-zh" ]; then
@@ -121,17 +123,15 @@ change_to_zsh()
 install_zsh()
 {
   if (whiptail --title "Confirmation" --yesno "Are you sure would like to install Z-Shell?" 8 60) then
-    if [ $password = "" ]; then
-      password=$(whiptail --title "Password Dialog" --passwordbox "Please enter your correct password" 10 60 \
+    password=$(whiptail --title "Password Dialog" --passwordbox "Please enter your correct password" 10 60 \
                3>&1 1>&2 2>&3)
-    fi
     res=$?
 
     if [ $res -eq 0 ]; then
       ## install Z-Shell
       install "zsh"
       ## Channge default login shell to Z-Shell if user give permission
-      if [ ! -d "${HOME}//.oh-my-zsh" ]; then
+      if [ $SHELL != "/usr/bin/zsh" ]; then
         if (whiptail --title "Confirmation" --yesno "Would you like to change your default shell to Z-Shell?" 8 60) then
           change_to_zsh
         fi
