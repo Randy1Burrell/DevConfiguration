@@ -157,6 +157,7 @@ zsh_menu()
     esac
     zsh_menu
   fi
+  fairwell_greeting
 }
 
 ## Name: tmux_menu
