@@ -85,7 +85,7 @@ change_to_zsh()
     return $res
   elif [ $SHELL = "/usr/bin/zsh" ]; then
     user_message "Your default login shell is already zsh"
-    return $res
+    return 2
   fi
 
   if (whiptail --title "Confirmation" --yesno "Are you sure you would like change your default login shell to zsh?" 8 60) then
