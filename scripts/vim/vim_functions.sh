@@ -39,7 +39,7 @@ configure_vim()
   get_vim_vundle
   res=$?
   if [ $res -ne 0 ]; then
-    return $res
+    user_message "Something went wrong installing Vundel"
   fi
   get_vim_pathogen
   res=$?
@@ -116,9 +116,15 @@ exists_vim_colorschemes()
 ## return: integer
 link_vim_colors()
 {
-    ln -s \
-    "${HOME}//.vim//bundle//Vundle.vim//vim-colorschemes//colors" \
-    "${HOME}//.vim//colors"
+  colors="${HOME}//.vim//colors"
+  colorScheme="${HOME}//.vim//bundle//vim-colorschemes//colors"
+  if [ ! -e "$colors" ]; then
+    exists_vim_colorschemes
+    res="$?"
+    if [ $res -eq 0 ]; then
+      ln -s "$colorScheme" "$colors"
+    fi
+  fi
   return $?
 }
 
