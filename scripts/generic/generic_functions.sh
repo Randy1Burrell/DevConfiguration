@@ -35,6 +35,12 @@ install()
   if [ $res -eq 1 ]
   then
     echo $password | sudo -S apt --assume-yes install $1
+    res="$?"
+    if [ $res -eq 0 ]; then
+      user_message "$1 has been installed"
+    else
+      user_message "Something went wrong installing $1\nYou can check if you entered a wrong password or\nmaybe you do not have privilleges to install"
+    fi
   else
     user_message "$1 Will not be installed\n$1 is already installed on your system"
     return 1
