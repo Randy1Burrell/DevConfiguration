@@ -184,6 +184,7 @@ tmux_menu()
       "merge")
         ;;
       "install")
+        tmux_install
         ;;
       "tmuxinator")
         ;;
