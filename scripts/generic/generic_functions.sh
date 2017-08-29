@@ -58,6 +58,7 @@ init_var()
     vimrc="${dir}//configs//vim//vimrc"
     zsh_conf="${dir}//configs//zsh//zshrc"
     alias_file="${dir}//configs//zsh//alias//alias.zsh"
+    tmux_conf="${dir}//configs//tmux//tmux.conf"
 }
 
 ## Name: check_ppa
