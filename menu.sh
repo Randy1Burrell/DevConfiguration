@@ -241,15 +241,13 @@ install_vim_menu()
         install $res
         if [ $? -eq 0 ]; then
           user_message "$res was installed!!"
-        elif [ $? -eq 1 ]; then
-          install_vim_menu
         else
-          user_message "Soemthing went wrong"
+          user_mesage "Something went wrong while installing $res"
         fi
-        install_vim_menu
       fi
       ;;
     esac
+    install_vim_menu
   fi
   fairwell_greeting
 }
