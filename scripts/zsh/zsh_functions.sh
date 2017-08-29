@@ -113,6 +113,11 @@ change_to_zsh()
   ## Reload .zshrc
   reload_zsh
 
+  if [ $? -eq 0 ]; then
+    user_message "Your default login shell has been changed to zsh"
+  elif [ $? -eq 1 ]; then
+    user message "Something went wrong! Sorry!!! :-("
+  fi
   return $?
 }
 
