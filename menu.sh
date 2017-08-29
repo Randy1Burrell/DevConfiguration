@@ -249,6 +249,6 @@ install_vim_menu()
       ;;
     esac
   fi
-  exit
+  fairwell_greeting
 }
 
