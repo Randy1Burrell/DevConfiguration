@@ -183,6 +183,7 @@ tmux_menu()
         replace_conf
         ;;
       "merge")
+        merge_conf
         ;;
       "install")
         tmux_install
