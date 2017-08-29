@@ -34,6 +34,10 @@ tmux_install()
     if (whiptail --title "Confirmation" --yesno "tmux has been successfully installed\nWould you like to configure you tmux.conf" 8 60) then
       tmux_rm_menu
     fi
+
+    if (whiptail --title "Confirmation" --yesno "Would you like to install and configure you tmuxinator" 8 60) then
+      config_tmuxinator
+    fi
   fi
 }
 
