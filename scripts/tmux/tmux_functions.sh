@@ -47,6 +47,19 @@ tmux_install()
 ## Return: ---
 config_tmuxinator()
 {
+  res=`ruby -v`
+  res="$?"
+  if [ $res -ne 0 ]; then
+    if (whiptail --title "Confirmation" --yesno "tmuxinator requires ruby and gems\nWould you like to install these packages?" 8 60) then
+      password=$(whiptail --title "Password Dialog" --passwordbox "Please enter your correct password" 10 60 \
+        3>&1 1>&2 2>&3)
+      rvm_manager
+      res="$?"
+      if [ $res -eq 0 ]; then
+        rvm install ruby
+      fi
+    fi
+  fi
   gem install tmuxinator
 }
 
