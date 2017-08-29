@@ -28,8 +28,6 @@ main()
   init_var
   ## Show main menu
   main_selection_menu
-  ## Give the user a fairwell message
-  fairwell_greeting
 }
 
 ## Invoke main function
