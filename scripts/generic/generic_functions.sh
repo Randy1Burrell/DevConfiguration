@@ -141,24 +141,12 @@ rvm_manager()
 ## Return: ---
 configure_all()
 {
-    ## Get vundle
-    get_vim_vundle
-    ## Get pathogen
-    get_vim_pathogen
-    ## Get vim colors
-    do_colors
-    ## Replace .vimrc for curren user
-    vim_replace $vimrc
-    vim_op_mesg $?
-    ## Configure zsh for current user
-    zsh_config $zsh_conf_file
-    ## Install rvm
-    rvm_manager
-    ## Install and configure tmux and tmuxinator
-    tmux_config_all
-    source "${HOME}//.zshrc"
-    sudo apt autoremove
-    sudo apt autoclean
+  ## Configure vim
+  configure_vim
+  ## Install and configure zsh for current user
+  install_zsh
+  ## Install and configure tmux for current user
+  tmux_install
 }
 
 ## Name: fairwell_greeting()
