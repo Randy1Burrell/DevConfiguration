@@ -49,14 +49,38 @@ config_tmuxinator()
 {
   res=`ruby -v`
   res="$?"
+  ## If ruby is not installed then install ruby
   if [ $res -ne 0 ]; then
+    ## Confirm that the user would like to install ruby
     if (whiptail --title "Confirmation" --yesno "tmuxinator requires ruby and gems\nWould you like to install these packages?" 8 60) then
-      password=$(whiptail --title "Password Dialog" --passwordbox "Please enter your correct password" 10 60 \
-        3>&1 1>&2 2>&3)
-      install ruby
+      ## Check if rvm is installed
+      res=`is_package_installed i"rvm"`
+      res=$?
+      ## If rvm is not installed then install rvm
+      if [ $res -eq 1 ]; then
+        password=$(whiptail --title "Password Dialog" --passwordbox "Please enter your correct password" 10 60 \
+          3>&1 1>&2 2>&3)
+        rvm_manager
+      fi
+      ## Install ruby through rvm
+      rvm install ruby
     fi
   fi
-  gem install tmuxinator
+  ## Find out if tmuxinator is already installed
+  res=`gem list --local | grep tmuxinator`
+  res="$?"
+  ## If tmuxinator is not installed then install tmuxinator
+  if [ $res -ne 0 ]; then
+    res=`gem install tmuxinator`
+    res="$?"
+    if [ $res -eq 0 ]; then
+      user_message "tmuxinator has been installed"
+    else
+      user_message "There was an error installing tmuxinator"
+    fi
+  else
+    user_message "tmuxinator is already installed"
+  fi
 }
 
 ## Name: replace_conf
