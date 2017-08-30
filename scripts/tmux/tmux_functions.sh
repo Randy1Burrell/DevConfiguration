@@ -18,7 +18,7 @@
 tmux_install()
 {
   ## Confirm that the user want to install tmux
-  if (whiptail --title "Confirmation" --yesno "Are you sure you would like to install $res?" 8 60) then
+  if (whiptail --title "Confirmation" --yesno "Are you sure you would like to install tmux?" 8 60) then
     ## Get the user's password
     password=$(whiptail --title "Password Dialog" --passwordbox "Please enter your correct password" 10 60 \
         3>&1 1>&2 2>&3)
@@ -53,11 +53,7 @@ config_tmuxinator()
     if (whiptail --title "Confirmation" --yesno "tmuxinator requires ruby and gems\nWould you like to install these packages?" 8 60) then
       password=$(whiptail --title "Password Dialog" --passwordbox "Please enter your correct password" 10 60 \
         3>&1 1>&2 2>&3)
-      rvm_manager
-      res="$?"
-      if [ $res -eq 0 ]; then
-        rvm install ruby
-      fi
+      install ruby
     fi
   fi
   gem install tmuxinator
