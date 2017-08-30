@@ -24,7 +24,7 @@ tmux_install()
         3>&1 1>&2 2>&3)
     res="$?"
     if [ $res -eq 0 ]; then
-      #install "tmux"
+      install "tmux"
       res="$?"
     else
       return $res
