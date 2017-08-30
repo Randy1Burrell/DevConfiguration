@@ -61,6 +61,7 @@ config_tmuxinator()
         password=$(whiptail --title "Password Dialog" --passwordbox "Please enter your correct password" 10 60 \
           3>&1 1>&2 2>&3)
         rvm_manager
+        echo "$password" | sudo -S apt --assume-yes update
       fi
       ## Install ruby through rvm
       rvm install ruby
