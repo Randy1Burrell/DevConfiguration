@@ -172,6 +172,7 @@ rvm_manager()
   else
     rvm_gpg
   fi
+  rvm reload
 }
 
 ## Name: Configure_all
