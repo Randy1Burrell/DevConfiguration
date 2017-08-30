@@ -100,46 +100,6 @@ rvm_gpg()
   fi
 }
 
-## Name: install_dependencies
-## Desc: Installs dependencies for development environment
-## Params: ---
-## Return: ---
-install_dependencies()
-{
-  install git-core
-  install curl
-  install zlib1g-dev
-  install build-essential
-  install libssl-dev
-  install libreadline-dev
-  install libyaml-dev
-  install libsqlite3-dev
-  install sqlite3
-  install libxml2-dev
-  install libxslt1-dev
-  install libcurl4-openssl-dev
-  install python-software-properties
-  install libffi-dev
-  install python-pip
-  install python-dev
-  install build-essential
-  ## Install ruby version 2.4
-  rvm install 2.4
-  gem install bundler
-  gem install rails
-
-  check_ppa "chris-lea/node.js"
-  res="$?"
-  if [ res -ne 0 ]; then
-    sudo add-apt-repository ppa:chris-lea/node.js
-  fi
-  sudo apt update
-  install nodejs
-  sudo pip install --upgrade pip
-  sudo pip install virtualenv
-  sudo pip install virtualenvwrapper
-}
-
 ## Name: rvm_manager
 ## Desc: Manages rvm installation process depending
 ##       on OS type. Example if OS is ubuntu use
