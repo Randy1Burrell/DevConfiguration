@@ -6,10 +6,12 @@ set rnu
 set autoindent
 " Set tab places
 set tabstop=4
-" Set my color scheme
-colorscheme spacegray
 " Set compatibility
 set nocompatible
+" Set copy past buffer to system buffer
+set clipboard+=unnamed
+" Set my color scheme
+colorscheme spacegray
 " Set specific color for file type
 filetype on
 
