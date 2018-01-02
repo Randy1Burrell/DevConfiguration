@@ -1,5 +1,7 @@
 " Set line number
 set nu
+" Set relative line number for easier naviagtion
+set rnu
 " Set auto indent to keep current indentation
 set autoindent
 " Set tab places
