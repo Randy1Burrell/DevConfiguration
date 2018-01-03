@@ -1,0 +1,31 @@
+# Set as the root configuration system wide
+root = true
+indent_style = space
+# Unix-style newlines with a new line ending every file
+[*]
+end_of_line = lf
+# Remove trailing white spaces for every file type
+trim_trailing_whitespace = true
+
+# Matched different files
+# Set default charset
+[*.{js,java,html,php,py,rb,css,c,cpp,yml,conf,sh}]
+charset = utf-8
+# Insert a final new line for certain file types
+insert_final_newline = true
+
+# Indentation style for different program files
+[*.{py,rb,php,c,cpp,java,yml,conf,*}]
+charset = utf-8
+indent_style = space
+indent_size = 4
+
+[*.{jade,json,js,html,htm,css,sh}]
+charset = utf-8
+indent_style = space
+indent_size = 2
+
+[MakeFile]
+charset = utf-8
+indent_style = tab
+indent_size = 4
