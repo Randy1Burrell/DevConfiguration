@@ -3,6 +3,7 @@ root = true
 indent_style = space
 # Unix-style newlines with a new line ending every file
 [*]
+# Put lf at end of each file
 end_of_line = lf
 # Remove trailing white spaces for every file type
 trim_trailing_whitespace = true
