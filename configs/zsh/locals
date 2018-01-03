@@ -36,6 +36,7 @@ ZSH_THEME="af-magic"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git django vim-interaction vi-mode virtualenv python pylint ubuntu git-remote-branch laravel grunt jsontools tmux pep8 branch jira postgres apache2-macports mysql-macports vundle frontend-search sudo bundler tmux-cssh github ruby)
 
+# All sources for environment
 source $ZSH/oh-my-zsh.sh
 source /usr/local/bin/virtualenvwrapper.sh
 # }}}
