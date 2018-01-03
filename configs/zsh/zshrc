@@ -8,12 +8,12 @@ export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
 export MANPAGER="less -X" # Don’t clear the screen after quitting a manual page
 export EDITOR="vim"
-export TERM="screen-256color"
+export TERM="xterm-256color"
 export CLICOLOR=1
 export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR
-export LSCOLORS=Gxfxcxdxbxegedabagacad
-export LS_COLORS=Gxfxcxdxbxegedabagacad
+export LSCOLORS='di=1;35:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=0;35:*.rpm=90:*.tar=1;31'
+export LS_COLORS='di=1;35:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=0;35:*.rpm=90:*.tar=1;31'
 # }}}
 
 ### Source {{{
@@ -106,6 +106,9 @@ zstyle ':completion:*:scp:*' group-order files all-files users hosts-domain host
 zstyle ':completion:*:ssh:*' tag-order users 'hosts:-host hosts:-domain:domain hosts:-ipaddr"IP\ Address *'
 zstyle ':completion:*:ssh:*' group-order hosts-domain hosts-host users hosts-ipaddr
 zstyle '*' single-ignored show
+
+ENABLE_CORRECTION="true"
+COMPLETION_WAITING_DOTS="true"
 # }}}
 
 # Key Bindings {{{
@@ -193,7 +196,7 @@ function virtualenv_info {
 function prompt_char {
   git branch >/dev/null 2>/dev/null && echo '±' && return
   hg root >/dev/null 2>/dev/null && echo '☿' && return
-  echo '○'
+#  echo '○'
 }
 
 function box_name {
@@ -276,7 +279,7 @@ function current_pwd {
 # $(prompt_char) '
 
 PROMPT='
-${PR_GREEN}M.%{$reset_color%} ${PR_BOLD_YELLOW}$(current_pwd)%{$reset_color%} $(git_prompt_string)'
+${PR_GREEN}%{$reset_color%} ${PR_BOLD_YELLOW}$(current_pwd)%{$reset_color%}%{$prompt_char%} $(git_prompt_string)'
 
 export SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r$reset_color [(y)es (n)o (a)bort (e)dit]? "
 
