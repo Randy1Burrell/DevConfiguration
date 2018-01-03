@@ -39,5 +39,11 @@ plugins=(git django vim-interaction vi-mode virtualenv python pylint ubuntu git-
 # All sources for environment
 source $ZSH/oh-my-zsh.sh
 source /usr/local/bin/virtualenvwrapper.sh
+
+if [ -f "${HOME}//.zsh//alias.zsh" ]
+then
+    source "${HOME}//.zsh//alias.zsh"
+fi
+
 # }}}
 
