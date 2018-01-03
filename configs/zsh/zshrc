@@ -21,6 +21,11 @@ if [ -f "${HOME}//.zsh_locals" ]
 then
     source ${HOME}//.zsh_locals
 fi
+
+if [ -f "${HOME}//.zsh_prompt" ]
+then
+    source ${HOME}//.zsh_prompt
+fi
 # }}}
 
 # Ruby {{{
