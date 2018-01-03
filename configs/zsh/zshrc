@@ -1,3 +1,6 @@
+# This file was copied and edited from https://github.com/Integralist/ProVim/blob/master/.zshrc.
+# If you need to view the original then go to the previousily mentioned URL.
+
 # Exports {{{
 export GITHUB_USER="randy1burrell"
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin # Reorder PATH so local bin is first
@@ -273,8 +276,7 @@ function current_pwd {
 # $(prompt_char) '
 
 PROMPT='
-${PR_GREEN}M.%{$reset_color%} ${PR_BOLD_YELLOW}$(current_pwd)%{$reset_color%} $(git_prompt_string)
-$(prompt_char) '
+${PR_GREEN}M.%{$reset_color%} ${PR_BOLD_YELLOW}$(current_pwd)%{$reset_color%} $(git_prompt_string)'
 
 export SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r$reset_color [(y)es (n)o (a)bort (e)dit]? "
 
@@ -297,15 +299,15 @@ function precmd {
   echo -ne "\e]1;$PWD:h:t/$PWD:t\a"
 }
 
-function set_running_app {
-  printf "\e]1; $PWD:t:$(history $HISTCMD | cut -b7- ) \a"
-}
-
-function preexec {
-  set_running_app
-}
-
-function postexec {
-  set_running_app
-}
+#function set_running_app {
+#  printf "\e]1; $PWD:t:$(history $HISTCMD | cut -b7- ) \a"
+#}
+#
+#function preexec {
+#  set_running_app
+#}
+#
+#function postexec {
+#  set_running_app
+#}
 # }}}
