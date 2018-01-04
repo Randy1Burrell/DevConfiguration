@@ -1,4 +1,3 @@
-
 " Settings {{{
 
 " Set specific color for file type
@@ -77,7 +76,7 @@ set relativenumber
 
 " Highlight tailing whitespace
 " Set list character types
-set list listchars=tab:▸\ ,eol:¬\ ,trail:·
+set list listchars=tab:▸\ ,eol:¬,trail:·
 
 " Get rid of the delay when pressing O (for example)
 " http://stackoverflow.com/questions/2158516/vim-delay-before-o-opens-a-new-line
@@ -129,13 +128,14 @@ let g:netrw_liststyle=3
 
 " Always highlight column 80 so it's easier to see where
 " cutoff appears on longer screens
-autocmd BufWinEnter * highlight ColorColumn ctermbg=darkred
+autocmd BufWinEnter * highlight ColorColumn ctermbg=Blue
 set colorcolumn=80
 " }}}
 
 " plugins {{{
 " Set execution for pathogen
 execute pathogen#infect()
+filetype plugin indent on " required by Pathogen Plugin Manager
 call pathogen#helptags()
 
 " Settings for syntastic
@@ -179,14 +179,9 @@ set pastetoggle=<F2>
 set showmode
 
 " configure nurdtree
-map <c-n> :nerdtreetoggle<cr>
+map <c-n> :NERDTreeToggle<cr>
 let g:nerdtreedirarrowexpandable = '▸'
 let g:nerdtreedirarrowcollapsible = '▾'
-"autocmd vimenter * nerdtree
-"autocmd stdinreadpre * let s:std_in=1
-"autocmd vimenter * if argc() == 0 && !exists("s:std_in") | nerdtree | endif
-"autocmd stdinreadpre * let s:std_in=1
-"autocmd vimenter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'nerdtree' argv()[0] | wincmd p | ene | endif
 
 " Configure git indicators for nerdtree
 let g:NERDTreeIndicatorMapCustom = {
@@ -201,12 +196,9 @@ let g:NERDTreeIndicatorMapCustom = {
 \ "Unknown"   : "?"
 \ }
 
-execute pathogen#infect()
-filetype plugin indent on " required by Pathogen Plugin Manager
-
 " Theme
 set background=light
-colorscheme Tomorrow-Night
+"colorscheme Tomorrow-Night
 
 " CtrlP
 map <leader>t <C-p>
@@ -251,21 +243,21 @@ let g:gitgutter_sign_column_always = 1
 highlight clear SignColumn
 
 " Searching the file system
-map <leader>' :NERDTreeToggle<cr>
-
-" Tabularize
-map <Leader>e :Tabularize /=<cr>
-map <Leader>c :Tabularize /:<cr>
-map <Leader>es :Tabularize /=\zs<cr>
-map <Leader>cs :Tabularize /:\zs<cr>
-
-" Camel Case Motion (for dealing with programming code)
-map <silent> w <Plug>CamelCaseMotion_w
-map <silent> b <Plug>CamelCaseMotion_b
-map <silent> e <Plug>CamelCaseMotion_e
-sunmap w
-sunmap b
-sunmap e
+"map <leader>' :NERDTreeToggle<cr>
+"
+"" Tabularize
+"map <Leader>e :Tabularize /=<cr>
+"map <Leader>c :Tabularize /:<cr>
+"map <Leader>es :Tabularize /=\zs<cr>
+"map <Leader>cs :Tabularize /:\zs<cr>
+"
+"" Camel Case Motion (for dealing with programming code)
+"map <silent> w <Plug>CamelCaseMotion_w
+"map <silent> b <Plug>CamelCaseMotion_b
+"map <silent> e <Plug>CamelCaseMotion_e
+"sunmap w
+"sunmap b
+"sunmap e
 
 " Set vundle repository manager
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -312,59 +304,59 @@ let g:airline_powerline_fonts = 1
 " to map something in just VISUAL mode use :vmap or :vnoremap
 
 " Clear search buffer
-:nnoremap § :nohlsearch<cr>
-
-" Command to use sudo when needed
-cmap w!! %!sudo tee > /dev/null %
-
-" File System Explorer (in horizontal split)
-map <leader>. :Sexplore<cr>
-
-" Buffers
-map <leader>yt :ls<cr>
-
-" Buffers (runs the delete buffer command on all open buffers)
-map <leader>yd :bufdo bd<cr>
-
-" Make handling vertical/linear Vim windows easier
-map <leader>w- <C-W>- " decrement height
-map <leader>w+ <C-W>+ " increment height
-map <leader>w] <C-W>_ " maximize height
-map <leader>w[ <C-W>= " equalize all windows
-
-" Handling horizontal Vim windows doesn't appear to be possible.
-" Attempting to map <C-W> < and > didn't work
-" Same with mapping <C-W>|
-
-" Make splitting Vim windows easier
-map <leader>; <C-W>s
-map <leader>` <C-W>v
-
-" Running Tests...
-" See also <https://gist.github.com/8114940>
-
-" Run currently open RSpec test file
-map <Leader>rf :w<cr>:!rspec % --format nested<cr>
-
-" Run current RSpec test
-" RSpec is clever enough to work out the test to run if the cursor is on any line within the test
-map <Leader>rl :w<cr>:exe "!rspec %" . ":" . line(".")<cr>
-
-" Run all RSpec tests
-map <Leader>rt :w<cr>:!rspec --format nested<cr>
-
-" Run currently open cucumber feature file
-map <Leader>cf :w<cr>:!cucumber %<cr>
-
-" Run current cucumber scenario
-map <Leader>cl :w<cr>:exe "!cucumber %" . ":" . line(".")<cr>
-
-" Run all cucumber feature files
-map <Leader>ct :w<cr>:!cucumber<cr>
-
-" Tmux style window selection
-map <Leader>ws :ChooseWin<cr>
-
+":nnoremap § :nohlsearch<cr>
+"
+"" Command to use sudo when needed
+"cmap w!! %!sudo tee > /dev/null %
+"
+"" File System Explorer (in horizontal split)
+"map <leader>. :Sexplore<cr>
+"
+"" Buffers
+"map <leader>yt :ls<cr>
+"
+"" Buffers (runs the delete buffer command on all open buffers)
+"map <leader>yd :bufdo bd<cr>
+"
+"" Make handling vertical/linear Vim windows easier
+"map <leader>w- <C-W>- " decrement height
+"map <leader>w+ <C-W>+ " increment height
+"map <leader>w] <C-W>_ " maximize height
+"map <leader>w[ <C-W>= " equalize all windows
+"
+"" Handling horizontal Vim windows doesn't appear to be possible.
+"" Attempting to map <C-W> < and > didn't work
+"" Same with mapping <C-W>|
+"
+"" Make splitting Vim windows easier
+"map <leader>; <C-W>s
+"map <leader>` <C-W>v
+"
+"" Running Tests...
+"" See also <https://gist.github.com/8114940>
+"
+"" Run currently open RSpec test file
+"map <Leader>rf :w<cr>:!rspec % --format nested<cr>
+"
+"" Run current RSpec test
+"" RSpec is clever enough to work out the test to run if the cursor is on any line within the test
+"map <Leader>rl :w<cr>:exe "!rspec %" . ":" . line(".")<cr>
+"
+"" Run all RSpec tests
+"map <Leader>rt :w<cr>:!rspec --format nested<cr>
+"
+"" Run currently open cucumber feature file
+"map <Leader>cf :w<cr>:!cucumber %<cr>
+"
+"" Run current cucumber scenario
+"map <Leader>cl :w<cr>:exe "!cucumber %" . ":" . line(".")<cr>
+"
+"" Run all cucumber feature files
+"map <Leader>ct :w<cr>:!cucumber<cr>
+"
+"" Tmux style window selection
+"map <Leader>ws :ChooseWin<cr>
+"
 " Set command to help save file that need root privilage
 cmap w!! :w !sudo tee >/dev/null %
 :au FileChangedShell * e!
@@ -460,3 +452,4 @@ fun! SetDiffColors()
 endfun
 autocmd FilterWritePre * call SetDiffColors()
 " }}}
+
