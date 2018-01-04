@@ -1,15 +1,6 @@
-" Set line number
-set nu
-" Set relative line number for easier naviagtion
-set rnu
 " Set auto indent to keep current indentation
 set autoindent
-" Set tab places
-set tabstop=4
-" Set compatibility
-set nocompatible
-" Set copy past buffer to system buffer
-set clipboard+=unnamed
+
 " Set my color scheme
 colorscheme spacegray
 " Set specific color for file type
@@ -21,8 +12,6 @@ filetype on
 set term=screen-256color
 " Set lists for special characters
 set list
-" Set list character types
-set listchars=tab:▸\ ,eol:¬
 
 " Sets airline defaults
 set laststatus=2
@@ -161,11 +150,11 @@ set shiftwidth=4
 set number
 
 " Turn on relative line numbers
-set rnu
+set relativenumber
 
 " Highlight tailing whitespace
-" See issue: https://github.com/Integralist/ProVim/issues/4
-set list listchars=tab:\ \ ,trail:·
+" Set list character types
+set list listchars=tab:▸\ ,eol:¬\ ,trail:·
 
 " Get rid of the delay when pressing O (for example)
 " http://stackoverflow.com/questions/2158516/vim-delay-before-o-opens-a-new-line
