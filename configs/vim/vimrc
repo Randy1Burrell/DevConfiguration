@@ -1,16 +1,12 @@
+
+" Settings {{{
+
 " Set specific color for file type
 filetype on
 
 " Sel terminal color
 set term=screen-256color
 
-
-
-" Set command to help save file that need root privilage
-cmap w!! :w !sudo tee >/dev/null %
-:au FileChangedShell * e!
-
-" Settings {{{
 " Set auto indent to keep current indentation
 set autoindent
 
@@ -235,9 +231,6 @@ let g:ctrlp_custom_ignore = '\v[\/]((node_modules)|\.(git|svn|grunt|sass-cache))
 " Ack (uses Ag behind the scenes)
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
-" Airline (status line)
-let g:airline_powerline_fonts = 1
-
 " Gist authorisation settings
 let g:github_user = $GITHUB_USER
 let g:github_token = $GITHUB_TOKEN
@@ -298,6 +291,10 @@ set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
+
+" Airline (status line)
+let g:airline_powerline_fonts = 1
+
 " }}}
 
 " Mappings {{{
@@ -367,6 +364,11 @@ map <Leader>ct :w<cr>:!cucumber<cr>
 
 " Tmux style window selection
 map <Leader>ws :ChooseWin<cr>
+
+" Set command to help save file that need root privilage
+cmap w!! :w !sudo tee >/dev/null %
+:au FileChangedShell * e!
+
 " }}}
 
 " Commands {{{
