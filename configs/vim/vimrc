@@ -1,95 +1,22 @@
-" Set auto indent to keep current indentation
-set autoindent
-
-" Set my color scheme
-colorscheme spacegray
 " Set specific color for file type
 filetype on
 
-
-
 " Sel terminal color
 set term=screen-256color
-" Set lists for special characters
-set list
 
-" Sets airline defaults
-set laststatus=2
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
 
-" Configure nurdtree
-map <C-n> :NERDTreeToggle<CR>
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
-"autocmd vimEnter * NERDTree
-"autocmd StdinReadPre * let s:std_in=1
-"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-"autocmd StdinReadPre * let s:std_in=1
-"autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-
-" Configure git indicators for nerdtree
-let g:NERDTreeIndicatorMapCustom = {
-\ "Modified"  : "✹",
-\ "Staged"    : "✚",
-\ "Untracked" : "✭",
-\ "Renamed"   : "➜",
-\ "Unmerged"  : "═",
-\ "Deleted"   : "✖",
-\ "Dirty"     : "✗",
-\ "Clean"     : "✔︎",
-\ "Unknown"   : "?"
-\ }
-" Set execution for pathogen
-execute pathogen#infect()
-call pathogen#helptags()
-
-" Settings for syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-" Settings for .editorconfig plugin
-let g:EditorConfig_exclude_patterns = ['fugitive://.*']
-
-" Show lines above 80 character long
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-au BufRead,BufNewFile *.py match OverLength /\%81v.\+/
-au BufRead,BufNewFile *.{py,php,js,rb} setlocal textwidth=120
-
-" Settings for syntastic plugin
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-" Syntax checker settings
-let g:syntastic_javascipt_checkers = ['eslint', 'jslint', 'closure compiler']
-let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
-let g:syntastic_python_checkers = ['flake8', 'pyflakes', 'pylint']
-
-" Set syntax highlight for conf files
-au BufNewFile,BufRead *.conf*,/etc/* setfiletype conf
-nmap <PasteStart>  <nop>
-nmap <PasteEnd>    <nop>
-nnoremap <F2> :set invpaste paste?<CR>
-set pastetoggle=<F2>
-set showmode
 
 " Set command to help save file that need root privilage
 cmap w!! :w !sudo tee >/dev/null %
 :au FileChangedShell * e!
 
 " Settings {{{
+" Set auto indent to keep current indentation
+set autoindent
+
+" Set my color scheme
+colorscheme spacegray
+
 " Switch syntax highlighting on, when the terminal has colors
 syntax on
 
@@ -210,7 +137,74 @@ autocmd BufWinEnter * highlight ColorColumn ctermbg=darkred
 set colorcolumn=80
 " }}}
 
-" Plugins {{{
+" plugins {{{
+" Set execution for pathogen
+execute pathogen#infect()
+call pathogen#helptags()
+
+" Settings for syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" Settings for .editorconfig plugin
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
+" Show lines above 80 character long
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+au BufRead,BufNewFile *.py match OverLength /\%81v.\+/
+au BufRead,BufNewFile *.{py,php,js,rb} setlocal textwidth=120
+
+" Settings for syntastic plugin
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" Syntax checker settings
+let g:syntastic_javascipt_checkers = ['eslint', 'jslint', 'closure compiler']
+let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+let g:syntastic_python_checkers = ['flake8', 'pyflakes', 'pylint']
+
+" Set syntax highlight for conf files
+au BufNewFile,BufRead *.conf*,/etc/* setfiletype conf
+nmap <PasteStart>  <nop>
+nmap <PasteEnd>    <nop>
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
+
+" configure nurdtree
+map <c-n> :nerdtreetoggle<cr>
+let g:nerdtreedirarrowexpandable = '▸'
+let g:nerdtreedirarrowcollapsible = '▾'
+"autocmd vimenter * nerdtree
+"autocmd stdinreadpre * let s:std_in=1
+"autocmd vimenter * if argc() == 0 && !exists("s:std_in") | nerdtree | endif
+"autocmd stdinreadpre * let s:std_in=1
+"autocmd vimenter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'nerdtree' argv()[0] | wincmd p | ene | endif
+
+" Configure git indicators for nerdtree
+let g:NERDTreeIndicatorMapCustom = {
+\ "Modified"  : "✹",
+\ "Staged"    : "✚",
+\ "Untracked" : "✭",
+\ "Renamed"   : "➜",
+\ "Unmerged"  : "═",
+\ "Deleted"   : "✖",
+\ "Dirty"     : "✗",
+\ "Clean"     : "✔︎",
+\ "Unknown"   : "?"
+\ }
+
 execute pathogen#infect()
 filetype plugin indent on " required by Pathogen Plugin Manager
 
@@ -299,6 +293,11 @@ Plugin 'tpope/vim-fugitive'
 " End pluing installation with vundle here
 call vundle#end()
 
+" Sets airline defaults
+set laststatus=2
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
 " }}}
 
 " Mappings {{{
