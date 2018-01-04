@@ -16,25 +16,6 @@ colorscheme spacegray
 filetype on
 
 
-" Set the repository manager
-set rtp+=~/.vim/bundle/Vundle.vim
-" Set call for plugin to be installed
-call vundle#begin()
-
-" Set plugins for installation
-Plugin 'gmarik/Vundle.vim'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'tpope/vim-fugitive'
-
-" End pluing installation with vundle here
-call vundle#end()
-
 
 " Sel terminal color
 set term=screen-256color
@@ -309,6 +290,26 @@ map <silent> e <Plug>CamelCaseMotion_e
 sunmap w
 sunmap b
 sunmap e
+
+" Set vundle repository manager
+set rtp+=~/.vim/bundle/Vundle.vim
+" Set call for plugin to be installed
+call vundle#begin()
+
+" Set plugins for installation
+Plugin 'gmarik/Vundle.vim'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'tpope/vim-fugitive'
+
+" End pluing installation with vundle here
+call vundle#end()
+
 " }}}
 
 " Mappings {{{
