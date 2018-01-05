@@ -131,15 +131,15 @@ let g:netrw_liststyle=3
 autocmd BufWinEnter * highlight ColorColumn ctermbg=DarkBlue
 set colorcolumn=80
 
-"Toggle relative numbering, and set to absolute on loss of focus or insert mode
-set rnu
+" This snippet was taken from https://github.com/colbycheeze/dotfiles/blob/master/vimrc
+" Toggle relative numbering, and set to absolute on loss of focus or insert mode
 function! ToggleNumbersOn()
-    set nu!
-    set rnu
+    set number!
+    set relativenumber
 endfunction
 function! ToggleRelativeOn()
-    set rnu!
-    set nu
+    set relativenumber!
+    set number
 endfunction
 
 autocmd FocusLost * call ToggleRelativeOn()
@@ -148,8 +148,8 @@ autocmd InsertEnter * call ToggleRelativeOn()
 autocmd InsertLeave * call ToggleRelativeOn()
 
 noremap <silent> \ :call ToggleRelativeOn()<CR>
-"
-"}}}
+
+" }}}
 
 " plugins {{{
 " Set execution for pathogen
