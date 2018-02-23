@@ -21,6 +21,7 @@ Plugin 'godlygeek/tabular'
 Plugin 't9md/vim-choosewin'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'thoughtbot/vim-rspec'
+Plugin 'Valloric/YouCompleteMe'
 
 " Ctags
 Plugin 'majutsushi/tagbar'
@@ -37,17 +38,28 @@ Plugin 'bkad/CamelCaseMotion'
 
 " Angular
 Plugin 'bdauria/angular-cli.vim'
+Plugin 'curist/vim-angular-template'
+
+" Linters
+" Plugin 'w0rp/ale'
+" Plugin 'maximbaz/lightline-ale'
 
 " Java
 Plugin 'artur-shaik/vim-javacomplete2'
-
-" TypeScript
-Plugin 'leafgarland/typescript-vim'
 
 " JavaScript
 Plugin 'Quramy/vim-js-pretty-template'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
+
+" JSON
+Plugin 'leshill/vim-json'
+
+" TypeScript
+Plugin 'leafgarland/typescript-vim'
+
+" Tmux
+Plugin 'christoomey/vim-tmux-navigator'
 
 " Vue
 Plugin 'posva/vim-vue'
@@ -61,4 +73,3 @@ filetype plugin indent on
 call pathogen#helptags()
 
 " }}}
-
