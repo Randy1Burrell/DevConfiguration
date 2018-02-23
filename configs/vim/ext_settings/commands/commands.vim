@@ -54,5 +54,11 @@ autocmd InsertLeave * call ToggleRelativeOn()
 " Always highlight column 80 so it's easier to see where
 " cutoff appears on longer screens
 autocmd BufWinEnter * highlight ColorColumn ctermbg=DarkBlue
+
+" Fold JavaScript methods automatically
+augroup javascript_folding
+    au!
+    au FileType javascript setlocal foldmethod=syntax
+augroup END
 " }}}
 
