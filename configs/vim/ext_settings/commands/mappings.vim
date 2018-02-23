@@ -16,7 +16,7 @@
 ":nnoremap § :nohlsearch<cr>
 "
 " Command to use sudo when needed
-cmap w!! %!sudo tee > /dev/null %
+nmap <leader>! %!sudo tee > /dev/null %<CR>
 
 " File System Explorer (in horizontal split)
 map <leader>. :Sexplore<cr>
