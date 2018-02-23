@@ -22,6 +22,14 @@ let g:syntastic_javascipt_checkers = ['eslint', 'jslint', 'closure compiler']
 let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
 let g:syntastic_python_checkers = ['flake8', 'pyflakes', 'pylint']
 let g:syntastic_typescript_checkers = ['tsuquyomi']
+let g:syntastic_java_checkers = []
+
+let g:syntastic_html_tidy_ignore_errors=[
+      \   'attribute name',
+      \   'is not recognized',
+      \   'discarding unexpected'
+      \ ]
+let g:syntastic_html_tidy_ignore_warnings=['discarding unexpected']
 
 " Set syntax highlight for conf files
 au BufNewFile,BufRead *.conf*,/etc/* setfiletype conf
@@ -32,16 +40,16 @@ let g:nerdtreedirarrowcollapsible = '▾'
 
 " Configure git indicators for nerdtree
 let g:NERDTreeIndicatorMapCustom = {
-            \ "Modified"  : "✹",
-            \ "Staged"    : "✚",
-            \ "Untracked" : "✭",
-            \ "Renamed"   : "➜",
-            \ "Unmerged"  : "═",
-            \ "Deleted"   : "✖",
-            \ "Dirty"     : "✗",
-            \ "Clean"     : "✔︎",
-            \ "Unknown"   : "?"
-            \ }
+      \ "Modified"  : "✹",
+      \ "Staged"    : "✚",
+      \ "Untracked" : "✭",
+      \ "Renamed"   : "➜",
+      \ "Unmerged"  : "═",
+      \ "Deleted"   : "✖",
+      \ "Dirty"     : "✗",
+      \ "Clean"     : "✔︎",
+      \ "Unknown"   : "?"
+      \ }
 
 " Theme
 set background=light
@@ -96,6 +104,9 @@ let g:airline_powerline_fonts = 1
 " Ailine theme
 let g:airline_theme='dark'
 
+" powerline setting
+" set laststatus=2
+
 " Autoformat files upon saving
 " au BufWrite * :Autoformat
 
@@ -124,6 +135,9 @@ autocmd FileType typescript,html call angular_cli#init()
 
 " Settings for you complete me plugin
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
+let g:ycm_python_binary_path = 'python'
+let g:ycm_rust_src_path = '~/.cargo/registry/src/'
+let g:EclimFileTypeValidate = 0
 
 " Configuration for php tags plugin
 let g:tagbar_phpctags_bin = '~/.vim/bundle/tagbar-phpctags.vim/bin'
@@ -146,5 +160,8 @@ let g:javascript_conceal_super                = "Ω"
 let g:javascript_conceal_arrow_function       = "⇒"
 let g:javascript_conceal_noarg_arrow_function = "🞅"
 let g:javascript_conceal_underscore_arrow_function = "🞅"
+
+" Configuration for MXW/vim-jsx
+let g:jsx_ext_required = 0
 
 " }}}
