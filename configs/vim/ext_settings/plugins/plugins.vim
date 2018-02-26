@@ -35,6 +35,7 @@ Plugin 'tpope/vim-fugitive'
 " General Programming
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'bkad/CamelCaseMotion'
+Plugin 'oblitum/rainbow'
 
 " Angular
 Plugin 'bdauria/angular-cli.vim'
