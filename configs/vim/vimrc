@@ -1,117 +1,14 @@
-" Set line number
-set nu
-" Set auto indent to keep current indentation
-set autoindent
-" Set tab places
-set tabstop=4
-" Set my color scheme
-colorscheme spacegray
-" Set compatibility
-set nocompatible
-" Set specific color for file type
-filetype on
+" Settings {{{
 
+" Import some settings from external files
+source ~/.vim/ext_settings/plugins/plugins.vim
+source ~/.vim/ext_settings/plugins/plugins_settings.vim
+source ~/.vim/ext_settings/plugins/tagbar_settings.vim
+source ~/.vim/ext_settings/commands/commands.vim
+source ~/.vim/ext_settings/commands/mappings.vim
+source ~/.vim/ext_settings/commands/templates.vim
+source ~/.vim/ext_settings/generic/functions.vim
+source ~/.vim/ext_settings/generic/default_setting.vim
 
-" Set the repository manager
-set rtp+=~/.vim/bundle/Vundle.vim
-" Set call for plugin to be installed
-call vundle#begin()
-
-" Set plugins for installation
-Plugin 'gmarik/Vundle.vim'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'tpope/vim-fugitive'
-
-" End pluing installation with vundle here
-call vundle#end()
-
-
-" Sel terminal color
-set term=screen-256color
-" Set lists for special characters
-set list
-" Set list character types
-set listchars=tab:▸\ ,eol:¬
-
-" Sets airline defaults
-set laststatus=2
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-
-" Configure nurdtree
-map <C-n> :NERDTreeToggle<CR>
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
-"autocmd vimEnter * NERDTree
-"autocmd StdinReadPre * let s:std_in=1
-"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-"autocmd StdinReadPre * let s:std_in=1
-"autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-
-" Configure git indicators for nerdtree
-let g:NERDTreeIndicatorMapCustom = {
-\ "Modified"  : "✹",
-\ "Staged"    : "✚",
-\ "Untracked" : "✭",
-\ "Renamed"   : "➜",
-\ "Unmerged"  : "═",
-\ "Deleted"   : "✖",
-\ "Dirty"     : "✗",
-\ "Clean"     : "✔︎",
-\ "Unknown"   : "?"
-\ }
-" Set execution for pathogen
-execute pathogen#infect()
-call pathogen#helptags()
-
-" Settings for syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-" Settings for .editorconfig plugin
-let g:EditorConfig_exclude_patterns = ['fugitive://.*']
-
-" Show lines above 80 character long
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-au BufRead,BufNewFile *.py match OverLength /\%81v.\+/
-au BufRead,BufNewFile *.{py,php,js,rb} setlocal textwidth=120
-
-" Settings for syntastic plugin
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-" Syntax checker settings
-let g:syntastic_javascipt_checkers = ['eslint', 'jslint', 'closure compiler']
-let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
-let g:syntastic_python_checkers = ['flake8', 'pyflakes', 'pylint']
-
-" Set syntax highlight for conf files
-au BufNewFile,BufRead *.conf*,/etc/* setfiletype conf
-nmap <PasteStart>  <nop>
-nmap <PasteEnd>    <nop>
-nnoremap <F2> :set invpaste paste?<CR>
-set pastetoggle=<F2>
-set showmode
-
-" Set command to help save file that need root privilage
-cmap w!! :w !sudo tee >/dev/null %
-:au FileChangedShell * e!
+" }}}
 

@@ -17,59 +17,18 @@
 ############################################################
 ## Import function file
 . ./scripts/vim/vim_functions.sh
-. ./scripts/vim/vim_menu.sh
 . ./scripts/zsh/zsh_functions.sh
-. ./scripts/zsh/zsh_menu.sh
 . ./scripts/tmux/tmux_functions.sh
 . ./scripts/generic/generic_functions.sh
-
-main_menu()
-{
-    while :
-    do
-        clear
-        echo "Welcome to development configuration's interactive shell"
-        echo "Please select from the options below"
-        echo "1 -- install and configure all programs for developement"
-        echo "2 -- install and configure vim"
-        echo "3 -- install and configure zsh"
-        echo "4 -- install and configure tmux"
-        echo "5 -- Quit"
-        read main_menu_option
-
-        case $main_menu_option in
-            1)
-                configure_all
-                ;;
-            2)
-                vim_menu
-                ;;
-            3)
-                zsh_menu
-                ;;
-            4)
-                tmux_menu
-                ;;
-            5)
-                echo "Good Bye!!"
-                sleep 2
-                clear
-                return 0
-                ;;
-            *)
-                echo "Options are 1-5"
-                sleep 1
-                ;;
-        esac
-    done
-}
+. ./menu.sh
 
 main()
 {
-    ## Initialize variables
-    init_var
-    ## Show main menu
-    main_menu
+  ## Initialize variables
+  init_var
+  ## Show main menu
+  main_selection_menu
 }
 
+## Invoke main function
 main

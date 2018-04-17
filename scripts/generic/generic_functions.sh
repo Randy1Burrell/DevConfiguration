@@ -30,15 +30,21 @@ is_package_installed()
 ## Return: ---
 install()
 {
-    res=`is_package_installed $1`
-    res=$?
-    if [ $res -eq 1 ]
-    then
-      echo 'Y' | sudo apt install $1
+  res=`is_package_installed $1`
+  res=$?
+  if [ $res -eq 1 ]
+  then
+    echo $password | sudo -S apt --assume-yes install $1
+    res="$?"
+    if [ $res -eq 0 ]; then
+      user_message "$1 has been installed"
     else
-      echo "Will not install $1"
-      echo "$1 is already installed"
+      user_message "Something went wrong installing $1\nYou can check if you entered a wrong password or\nmaybe you do not have privilleges to install"
     fi
+  else
+    user_message "$1 Will not be installed\n$1 is already installed on your system"
+    return 1
+  fi
 }
 
 ## Name: init_var
@@ -48,8 +54,11 @@ install()
 init_var()
 {
     dir=`pwd`
+    password=""
     vimrc="${dir}//configs//vim//vimrc"
-    zsh_conf_file="${dir}//configs//zsh//zshrc"
+    zsh_conf="${dir}//configs//zsh//zshrc"
+    alias_file="${dir}//configs//zsh//alias//alias.zsh"
+    tmux_conf="${dir}//configs//tmux//tmux.conf"
 }
 
 ## Name: check_ppa
@@ -91,46 +100,6 @@ rvm_gpg()
   fi
 }
 
-## Name: install_dependencies
-## Desc: Installs dependencies for development environment
-## Params: ---
-## Return: ---
-install_dependencies()
-{
-  install git-core
-  install curl
-  install zlib1g-dev
-  install build-essential
-  install libssl-dev
-  install libreadline-dev
-  install libyaml-dev
-  install libsqlite3-dev
-  install sqlite3
-  install libxml2-dev
-  install libxslt1-dev
-  install libcurl4-openssl-dev
-  install python-software-properties
-  install libffi-dev
-  install python-pip
-  install python-dev
-  install build-essential
-  ## Install ruby version 2.4
-  rvm install 2.4
-  gem install bundler
-  gem install rails
-
-  check_ppa "chris-lea/node.js"
-  res="$?"
-  if [ res -ne 0 ]; then
-    sudo add-apt-repository ppa:chris-lea/node.js
-  fi
-  sudo apt update
-  install nodejs
-  sudo pip install --upgrade pip
-  sudo pip install virtualenv
-  sudo pip install virtualenvwrapper
-}
-
 ## Name: rvm_manager
 ## Desc: Manages rvm installation process depending
 ##       on OS type. Example if OS is ubuntu use
@@ -163,7 +132,7 @@ rvm_manager()
   else
     rvm_gpg
   fi
-  install_dependencies
+  rvm reload
 }
 
 ## Name: Configure_all
@@ -172,23 +141,33 @@ rvm_manager()
 ## Return: ---
 configure_all()
 {
-    ## Get vundle
-    get_vim_vundle
-    ## Get pathogen
-    get_vim_pathogen
-    ## Get vim colors
-    do_colors
-    ## Replace .vimrc for curren user
-    vim_replace $vimrc
-    vim_op_mesg $?
-    ## Configure zsh for current user
-    zsh_config $zsh_conf_file
-    ## Install rvm
-    rvm_manager
-    ## Install and configure tmux and tmuxinator
-    tmux_config_all
-    source "${HOME}//.zshrc"
-    sudo apt autoremove
-    sudo apt autoclean
+  ## Configure vim
+  configure_vim
+  ## Install and configure zsh for current user
+  install_zsh
+  ## Install and configure tmux for current user
+  tmux_install
+}
+
+## Name: fairwell_greeting()
+## Desc: echoes fairwell msg to user
+##       wait for 2 seconds then
+##       clears the screen
+## Params: string message -- default to good bye
+##         if no message is passed
+## Return: integer
+fairwell_greeting()
+{
+  if [ "$#" -gt 0 ]; then
+    while [ "$#" -gt 0 ]
+    do
+      user_message "$1"
+      shift
+    done
+  else
+    user_message "Good Bye!!"
+  fi
+  clear
+  exit
 }
 
