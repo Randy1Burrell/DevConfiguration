@@ -669,7 +669,6 @@ map <Leader>q :Bdelete<CR>
 
 " Import some settings from external files
 source ~/.vim/ext_settings/plugins/tagbar_settings.vim
-source ~/.vim/ext_settings/commands/commands.vim
 source ~/.vim/ext_settings/commands/mappings.vim
 source ~/.vim/ext_settings/commands/templates.vim
 source ~/.vim/ext_settings/generic/functions.vim
