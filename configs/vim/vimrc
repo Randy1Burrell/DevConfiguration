@@ -434,7 +434,6 @@ let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
 " Settings {{{
 
 " Import some settings from external files
-source ~/.vim/ext_settings/plugins/plugins.vim
 source ~/.vim/ext_settings/plugins/plugins_settings.vim
 source ~/.vim/ext_settings/plugins/tagbar_settings.vim
 source ~/.vim/ext_settings/commands/commands.vim
