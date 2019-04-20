@@ -144,6 +144,104 @@ let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\""
 "
 " }}}
 
+" plugins {{{
+" Contains vim plugins and installation methods
+
+" Set vundle repository manager
+set rtp+=~/.vim/bundle/Vundle.vim
+" Set call for plugin to be installed
+call vundle#begin()
+
+" Set plugins for installation
+Plugin 'gmarik/Vundle.vim'
+
+" Utility
+Plugin 'flazz/vim-colorschemes'
+Plugin 'ctrlpvim/ctrlp.vim'
+" Plugin 'editorconfig/editorconfig-vim'
+Plugin 'vim-airline/vim-airline'
+" Plugin 'Shougo/neocomplete.vim'
+
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Chiel92/vim-autoformat'
+Plugin 'godlygeek/tabular'
+Plugin 't9md/vim-choosewin'
+Plugin 'Shougo/vimproc.vim'
+Plugin 'thoughtbot/vim-rspec'
+" Plugin 'Valloric/YouCompleteMe'
+Plugin 'zxqfl/tabnine-vim'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'KabbAmine/zeavim.vim'
+
+" Ctags
+Plugin 'majutsushi/tagbar'
+Plugin 'kberov/ctags'
+"Plugin 'vim-php/tagbar-phpctags.vim'
+"Plugin 'ludovicchabant/vim-gutentags'
+
+" Git
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'tpope/vim-fugitive'
+
+" General Programming
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'bkad/CamelCaseMotion'
+Plugin 'oblitum/rainbow'
+
+" Angular
+Plugin 'bdauria/angular-cli.vim'
+Plugin 'curist/vim-angular-template'
+
+" Linters
+" Plugin 'w0rp/ale'
+" Plugin 'maximbaz/lightline-ale'
+
+" Java
+Plugin 'artur-shaik/vim-javacomplete2'
+
+" JavaScript
+Plugin 'Quramy/vim-js-pretty-template'
+Plugin 'pangloss/vim-javascript'
+Plugin 'maksimr/vim-jsbeautify'
+Plugin 'mxw/vim-jsx'
+
+" JSON
+Plugin 'leshill/vim-json'
+
+" PHP
+Plugin 'StanAngeloff/php.vim'
+Plugin 'ncm2/ncm2'
+Plugin 'phpactor/phpactor'
+Plugin 'phpactor/ncm2-phpactor'
+
+" TypeScript
+Plugin 'leafgarland/typescript-vim'
+
+" Tmux
+Plugin 'christoomey/vim-tmux-navigator'
+
+" Vue
+Plugin 'posva/vim-vue'
+
+" Handling Buffers
+Plugin 'moll/vim-bbye'
+
+" Comments
+Plugin 'tpope/vim-commentary'
+
+" Doc sets integration for vi
+Plugin 'rizzatti/dash.vim'
+
+" End pluing installation with vundle here
+call vundle#end()
+
+" Set execution for pathogen
+execute pathogen#infect()
+filetype plugin indent on
+call pathogen#helptags()
+
+" }}}
 " Settings {{{
 
 " Import some settings from external files
