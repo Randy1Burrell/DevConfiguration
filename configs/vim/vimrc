@@ -742,10 +742,7 @@ map <Leader>q :Bdelete<CR>
 " }}}
 
 " External Imported Settings {{{
-
 " Import some settings from external files
 source ~/.vim/ext_settings/plugins/tagbar_settings.vim
-source ~/.vim/ext_settings/generic/functions.vim
-
 " }}}
 
