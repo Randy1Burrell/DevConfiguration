@@ -665,11 +665,19 @@ map <leader>qx :call JsxBeautify()<cr>
 map <Leader>q :Bdelete<CR>
 " }}}
 
+" Templates {{{
+" Loads templates from template files
+"
+
+" Template for new html files
+"autocmd BufNewFile *.html 0r ~/.vim/templates/skeleton.html
+"autocmd BufNewFile *.py 0r ~/.vim/templates/skeleton.py
+" }}}
+
 " External Imported Settings {{{
 
 " Import some settings from external files
 source ~/.vim/ext_settings/plugins/tagbar_settings.vim
-source ~/.vim/ext_settings/commands/templates.vim
 source ~/.vim/ext_settings/generic/functions.vim
 
 " }}}
