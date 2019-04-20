@@ -431,7 +431,8 @@ let g:rainbow_guifgs = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
 let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
 
 " }}}
-" Settings {{{
+
+" External Imported Settings {{{
 
 " Import some settings from external files
 source ~/.vim/ext_settings/plugins/tagbar_settings.vim
