@@ -164,7 +164,6 @@ alias tmd='tmuxinator delete'
 
 # convenience aliases for editing configs
 alias ev='vim ~/.vimrc'
-alias ea='vim ~/.zsh/alias.zsh'
 alias et='vim ~/.tmux.conf'
 alias ez='vim ~/.zshrc'
 
