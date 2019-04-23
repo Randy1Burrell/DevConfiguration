@@ -3,9 +3,12 @@
 
 # Exports {{{
 
+## SET UP GIT
 # Who git and github will see me as
 export GITHUB_USER="randy1burrell"
+# My git user
 git config --global user.name "randy1burrell"
+# My git email
 git config --global user.email "randy1burrell@yahoo.com"
 
 # Path to bin files
@@ -25,6 +28,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+## SET UP COLOR
 # Change grep color options
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
