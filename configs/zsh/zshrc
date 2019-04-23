@@ -25,6 +25,9 @@ export PATH=$PATH:$HOME/.rvm/bin:/usr/local/jaxrs-ri/ext
 # Append path to golang bins
 export PATH=${PATH}:${HOME}/Projects/Environments/Go/bin/
 
+# Add path for cuda gpu lib
+export PATH=$PATH:/usr/local/cuda/bin
+
 # Append aws exe to path
 export PATH=${PATH}:${HOME}/.local/bin
 
