@@ -14,9 +14,11 @@ git config --global user.email "randy1burrell@yahoo.com"
 # Path to bin files
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin # Reorder PATH so local bin is first
 export PATH=PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin:$HOME/vimpkg/bin:$HOME/.custom_scripts
+
 # Add PATH for android sdk
 export PATH=$PATH:$HOME/Android/Sdk/tools
 export PATH=$PATH:$HOME/Android/Sdk/platform-tools
+
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH=$PATH:$HOME/.rvm/bin:/usr/local/jaxrs-ri/ext
 
@@ -26,7 +28,7 @@ export PATH=${PATH}:${HOME}/Projects/Environments/Go/bin/
 # Append aws exe to path
 export PATH=${PATH}:${HOME}/.local/bin
 
-# Set yarn
+# Set up yarn
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # Set up ruby
@@ -38,10 +40,15 @@ export CPPFLAGS="-I/usr/local/opt/ruby/include"
 export CPPFLAGS="-I/usr/local/opt/ruby/include"
 export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
 
-# PATH to java home
+# PATH to java home Linux
+# export JAVA_HOME=/usr/lib/jvm/java-8-oracle/
+# export CATALINA_HOME=/usr/local/apache-tomcat-9.0.0.M22/
+
+# PATH to java home MacOS
 export JAVA_HOME=/usr/lib/jvm/java-8-oracle/
 export CATALINA_HOME=/usr/local/apache-tomcat-9.0.0.M22/
 
+# SET UP NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
