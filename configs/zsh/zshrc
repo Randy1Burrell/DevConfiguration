@@ -2,8 +2,13 @@
 # If you need to view the original then go to the previousily mentioned URL.
 
 # Exports {{{
+
+# Who git and github will see me as
 export GITHUB_USER="randy1burrell"
+
+# Path to bin files
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin # Reorder PATH so local bin is first
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin:$HOME/vimpkg/bin:$HOME/.custom_scripts
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
 export MANPAGER="less -X" # Don’t clear the screen after quitting a manual page
@@ -15,8 +20,6 @@ export VISUAL=$EDITOR
 export LSCOLORS='di=1;35:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=0;35:*.rpm=90:*.tar=1;31'
 export LS_COLORS='di=1;35:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=0;35:*.rpm=90:*.tar=1;31'
 
-# Path to bin files
-export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin:$HOME/vimpkg/bin:$HOME/.custom_scripts
 
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/.projects
