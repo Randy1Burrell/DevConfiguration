@@ -121,6 +121,33 @@ alias tmuxsrc="tmux source-file ~/.tmux.conf"
 alias tmuxkillall="tmux ls | cut -d : -f 1 | xargs -I {} tmux kill-session -t {}" # tmux kill all sessions
 alias ct="ctags -R --exclude=.git --exclude=node_modules"
 alias dotfiles="ls -a | grep '^\.' | grep --invert-match '\.DS_Store\|\.$'"
+
+# aliases for Tmux
+alias tmux='tmux -2'
+alias ta='tmux attach -t'
+alias tnew='tmux new -s'
+alias tls='tmux ls'
+alias td='tmux detach'
+alias tdt='tmux detach -t'
+alias tkill='tmux kill-session -t'
+alias tkills='tmux kill-session'
+alias tm='tmuxinator'
+alias tmn='tmuxinator new'
+alias tms='tmuxinator start'
+alias tml='tmuxinator list'
+alias tme='tmuxinator edit'
+alias tmc='tmuxinator copy'
+alias tmd='tmuxinator delete'
+
+# convenience aliases for editing configs
+alias ev='vim ~/.vimrc'
+alias ea='vim ~/.zsh/alias.zsh'
+alias et='vim ~/.tmux.conf'
+alias ez='vim ~/.zshrc'
+
+# convenient aliases for updating prompt
+alias sz='source ~/.zshrc'
+
 # }}}
 
 # History {{{
