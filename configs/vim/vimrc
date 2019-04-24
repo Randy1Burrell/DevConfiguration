@@ -746,7 +746,7 @@ map <Leader>q :Bdelete<CR>
 source ~/.vim/ext_settings/tagbar_settings.vim
 " }}}
 
-" {{{
+" Tagbar settings {{{
 " Ada Settings {{{
 let g:tagbar_type_ada = {
       \ 'ctagstype': 'ada',
