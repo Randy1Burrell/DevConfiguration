@@ -242,7 +242,7 @@ filetype plugin indent on
 call pathogen#helptags()
 
 " }}}
-"
+
 " Settings for plugins {{{
 
 " Settings for .editorconfig plugin
