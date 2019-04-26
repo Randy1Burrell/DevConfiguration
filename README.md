@@ -1,6 +1,8 @@
 # DevConfiguration
 This repo contains my dot files for personal confignuration on vi, tmux and zsh. 
 
+> Note: Please backup your respective original config file before performing any of the following command
+
 ## Usage
  ### VI
 
