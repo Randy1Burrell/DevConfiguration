@@ -41,6 +41,7 @@ Make sure zsh is currently the default shell then run the following command:
 ### Tmux
 
 Make sure tmux is installed and run the following command:
+
 `cp configs/tmux/tmux.conf ~/.tmux.conf`
 
 > That's all folks
