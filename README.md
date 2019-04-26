@@ -2,7 +2,8 @@
 This repo contains my dot files for personal confignuration on vi, tmux and zsh. 
 
 > Note: Please backup your respective original config file before performing any of the following command.
-> Example: if you want to use the vim configuration in this repository make sure you back up your current vimrc and other vim config files you make have created
+> Example: if you want to use the vim configuration in this repository make sure you back up your current vimrc 
+> and other vim config files you make have created.
 
 ## Usage
  ### VI
