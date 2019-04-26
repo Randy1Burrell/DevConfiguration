@@ -30,3 +30,10 @@ Make a plugins directory in ~/.vim directory by running the following command:
 Copy files from configs/vim/plugins to ~/.vim/plugin/, the command is as follows:
 
 `cp configs/vim/plugin/* ~/.vim/plugin`
+
+### ZSH
+Make sure zsh is currently the default shell then run the following command:
+
+`cp configs/zsh/zshrc ~/.zshrc
+
+> That's it!
