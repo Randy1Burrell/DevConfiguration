@@ -26,3 +26,7 @@ Then install vim plugins by running the following command:
 Make a plugins directory in ~/.vim directory by running the following command:
 
 `mkdir -p ~/.vim/plugin`
+
+Copy files from configs/vim/plugins to ~/.vim/plugin/, the command is as follows:
+
+`cp configs/vim/plugin/* ~/.vim/plugin`
