@@ -15,3 +15,5 @@ This repo contains my dot files for personal confignuration on vi, tmux and zsh.
  Copy the the file configs/vim/vimrc to .vimrc in your home folder:
 
  `cp configs/vim/vimrc ~/.vimrc`
+
+Install vim (vundle)[https://github.com/VundleVim/Vundle.vim] and (pathogen)[https://github.com/tpope/vim-pathogen] by following their respective installation guide.
