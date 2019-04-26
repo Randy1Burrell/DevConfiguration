@@ -11,3 +11,7 @@ This repo contains my dot files for personal confignuration on vi, tmux and zsh.
  Navigate to the repo's folder using the following command:
 
  `cd DevConfiguration`
+
+ Copy the the file config/vim/vimrc to .vimrc in your home folder:
+
+ `cp config/vim/vimrc ~/.vimrc`
