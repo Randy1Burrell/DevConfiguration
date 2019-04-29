@@ -591,7 +591,7 @@ map <Leader>q :Bdelete<CR>
 "
 
 " Template for new html files
-"autocmd BufNewFile *.html 0r ~/.vim/templates/skeleton.html
+autocmd BufNewFile *.html 0r ~/.vim/templates/skeleton.html
 "autocmd BufNewFile *.py 0r ~/.vim/templates/skeleton.py
 " }}}
 
