@@ -588,9 +588,6 @@ map <Leader>q :Bdelete<CR>
 
 " Templates {{{
 " Loads templates from template files
-"
-
-" Template for new html files
 " This is from dynamica templates example at:
 " https://vim.fandom.com/wiki/Use_eval_to_create_dynamic_templates
 augroup templates
@@ -600,8 +597,6 @@ augroup templates
   " parse special text in the templates after the read
   autocmd BufNewFile * %substitute#\[:VIM_EVAL:\]\(.\{-\}\)\[:END_EVAL:\]#\=eval(submatch(1))#ge
 augroup END
-"autocmd BufNewFile *.html 0r ~/.vim/templates/skeleton.html
-"autocmd BufNewFile *.py 0r ~/.vim/templates/skeleton.py
 " }}}
 
 " Tagbar settings {{{
