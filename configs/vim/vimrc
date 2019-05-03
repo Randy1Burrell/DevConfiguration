@@ -435,7 +435,7 @@ endfun
 ":nnoremap § :nohlsearch<cr>
 "
 " Command to use sudo when needed
-nmap <leader>! %!sudo tee > /dev/null %<CR>
+nmap <leader>! %!sudo tee > /dev/null %<cr>
 
 " File System Explorer (in horizontal split)
 map <leader>. :Sexplore<cr>
@@ -455,15 +455,15 @@ map <leader>w[ <C-W>= " equalize all windows
 " Moving around windows quickly
 map <leader>] <C-W>l " Move to right window
 map <leader>[ <C-W>h " Move to left window
-map <leader><CR> <C-W>j " Move to left window
+map <leader><cr> <C-W>j " Move to left window
 map <leader>= <C-W>k " Move to left window
 
 " Source vimrc
-map <leader>v :source ~/.vimrc<CR>
-map <leader>m :PluginInstall<CR>
+map <leader>v :source ~/.vimrc<cr>
+map <leader>m :PluginInstall<cr>
 
 " Open ~/.vimrc
-map <leader>" :e ~/.vimrc<CR>
+map <leader>" :e ~/.vimrc<cr>
 
 " Handling horizontal Vim windows doesn't appear to be possible.
 " Attempting to map <C-W> < and > didn't work
@@ -503,33 +503,33 @@ cmap w!! :w !sudo tee >/dev/null %
 :au FileChangedShell * e!
 
 " Key maps for git
-noremap <leader><F3> :Git add %<CR>
-noremap <leader><F4> :Gcommit<CR>i
-noremap <leader><F5> :wq<CR>:Gpush<CR>
-noremap <leader><F6> :Gstatus<CR>
-noremap <leader><F7> :Gpull<CR>
-noremap <leader><F8> :Git diff %<CR>
-noremap <leader><F9> :Git add %<CR>:Gcommit<CR>i
-noremap <leader><F2> :wq<CR>:Gpush<CR><CR>
+noremap <leader><F3> :Git add %<cr>
+noremap <leader><F4> :Gcommit<cr>i
+noremap <leader><F5> :wq<cr>:Gpush<cr>
+noremap <leader><F6> :Gstatus<cr>
+noremap <leader><F7> :Gpull<cr>
+noremap <leader><F8> :Git diff %<cr>
+noremap <leader><F9> :Git add %<cr>:Gcommit<cr>i
+noremap <leader><F2> :wq<cr>:Gpush<cr><cr>
 
 " Key maps for tabNext
-noremap <leader><F12> :tabNext<CR>
+noremap <leader><F12> :tabNext<cr>
 
 " Key maps for saving and exiting vim
-map <leader>s :w<CR>
-map <leader>x :q<CR>
+map <leader>s :w<cr>
+map <leader>x :q<cr>
 
 " Paste from system buffer
 map <leader>i "*p
 
 " Buffer navigation key maps
-map <leader>n :bn<CR>
-map <leader>p :bp<CR>
+map <leader>n :bn<cr>
+map <leader>p :bp<cr>
 map <leader>b :b
 map <leader>l <C-^>
 
 " Maps ToggleRelativeOn function to \\ key call
-noremap <silent><leader>\ :call ToggleRelativeOn()<CR>
+noremap <silent><leader>\ :call ToggleRelativeOn()<cr>
 
 " Searching the file system
 map <leader>' :NERDTreeToggle<cr>
@@ -550,7 +550,7 @@ sunmap e
 
 " Settings for vim-autoformat
 " Maps F3 function key to autoformat
-noremap <leader><SPACE> :Autoformat<CR>
+noremap <leader><SPACE> :Autoformat<cr>
 
 " Map key to autoformat files
 map <leader>- gg=G``zz
@@ -558,7 +558,7 @@ map <leader>- gg=G``zz
 " F2 toggles paste mode
 nmap <PasteStart>  <nop>
 nmap <PasteEnd>    <nop>
-nnoremap <F2> :set invpaste paste?<CR>
+nnoremap <F2> :set invpaste paste?<cr>
 set pastetoggle=<F2>
 set showmode
 
@@ -567,10 +567,10 @@ map <leader>t <C-p>
 map <leader>y :CtrlPBuffer<cr>
 
 " Settings for tagbar plugin
-nmap <F8> :TagbarToggle<CR>
+nmap <F8> :TagbarToggle<cr>
 
 " Map for pangloss/vim-javascript plugin
-map <leader><TAB> :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<CR>
+map <leader><TAB> :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<cr>
 
 " Mapping for zeavim
 nmap <leader>z <Plug>Zeavim
@@ -583,7 +583,7 @@ map <leader>qs :call JsBeautify()<cr>
 map <leader>qx :call JsxBeautify()<cr>
 
 " Mapping for vim-bbye
-map <Leader>q :Bdelete<CR>
+map <Leader>q :Bdelete<cr>
 " }}}
 
 " Templates {{{
