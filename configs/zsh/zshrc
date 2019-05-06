@@ -7,9 +7,9 @@
 # Who git and github will see me as
 export GITHUB_USER="randy1burrell"
 # My git user -- CHANGE ACCORDINGLY
-git config --global user.name "randy1burrell"
+# git config --global user.name "randy1burrell"
 # My git email -- CHANGE ACCORDINGLY
-git config --global user.email "randy1burrell@yahoo.com"
+# git config --global user.email "randy1burrell@yahoo.com"
 
 # Path to bin files
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin # Reorder PATH so local bin is first
