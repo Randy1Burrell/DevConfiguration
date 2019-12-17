@@ -7,22 +7,29 @@
 # Who git and github will see me as
 export GITHUB_USER="randy1burrell"
 # My git user -- CHANGE ACCORDINGLY
-# git config --global user.name "randy1burrell"
+git config --global user.name "randy1burrell"
 # My git email -- CHANGE ACCORDINGLY
-# git config --global user.email "randy1burrell@yahoo.com"
+git config --global user.email "randy1burrell@yahoo.com"
 
 # Path to bin files
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin # Reorder PATH so local bin is first
-export PATH=PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin:$HOME/vimpkg/bin:$HOME/.custom_scripts
+export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:
+export PATH=$PATH:/bin:/usr/games:/usr/local/games:/snap/bin:$HOME/vimpkg/bin
+
+# Add custon scripts directort
+export PATH=$PATH:$HOME/.custom_scripts
 
 # Add PATH for android sdk
-export PATH=$PATH:$HOME/Android/Sdk/tools
-export PATH=$PATH:$HOME/Android/Sdk/platform-tools
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH=$PATH:$HOME/.rvm/bin:/usr/local/jaxrs-ri/ext
 
-# Append path to golang bins
+# Add Golang path
 export PATH=${PATH}:${HOME}/Projects/Environments/Go/bin/
 
 # Add path for cuda gpu lib
@@ -32,23 +39,25 @@ export PATH=$PATH:/usr/local/cuda/bin
 export PATH=${PATH}:${HOME}/.local/bin
 
 # Set up yarn
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH=$PATH:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin
 
 # Set up ruby
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-export PATH="/usr/local/opt/ruby/bin:$PATH"
+export PATH=$PATH:/usr/local/opt/ruby/bin
+export GEM_HOME=$HOME/.gem
+export PATH=$PATH:$GEM_HOME/bin
 
 # Set up ruby include files
 export CPPFLAGS="-I/usr/local/opt/ruby/include"
-export CPPFLAGS="-I/usr/local/opt/ruby/include"
 export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
 
+# Virtual env wrappet
+VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3.7
 # PATH to java home Linux
 # export JAVA_HOME=/usr/lib/jvm/java-8-oracle/
 # export CATALINA_HOME=/usr/local/apache-tomcat-9.0.0.M22/
 
 # PATH to java home MacOS
-export JAVA_HOME=/usr/lib/jvm/java-8-oracle/
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home
 export CATALINA_HOME=/usr/local/apache-tomcat-9.0.0.M22/
 
 # SET UP NVM
@@ -105,7 +114,7 @@ function tmuxkill() {
 # }}}
 
 # Alias {{{
-alias vi="vim"
+alias vi="nvim"
 alias r="source ~/.zshrc"
 alias tat='tmux new-session -As $(basename "$PWD" | tr . -)' # will attach if session exists, or create a new session
 alias tmuxsrc="tmux source-file ~/.tmux.conf"
@@ -131,9 +140,9 @@ alias tmc='tmuxinator copy'
 alias tmd='tmuxinator delete'
 
 # convenience aliases for editing configs
-alias ev='vim ~/.vimrc'
-alias et='vim ~/.tmux.conf'
-alias ez='vim ~/.zshrc'
+alias ev='vi ~/.vimrc'
+alias et='vi ~/.tmux.conf'
+alias ez='vi ~/.zshrc'
 
 # convenient aliases for updating prompt
 alias sz='source ~/.zshrc'
@@ -461,3 +470,30 @@ _wp_complete() {
 }
 complete -o nospace -F _wp_complete wp
 # }}}
+
+# The next line updates PATH for the Google Cloud SDK. {{{
+if [ -f '/Users/randyburrell/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/randyburrell/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/randyburrell/google-cloud-sdk/completion.zosh.inc' ]; then . '/Users/randyburrell/google-cloud-sdk/completion.zsh.inc'; fi
+# }}}
+
+# Completion script for GHCI {{{
+eval "$(stack --bash-completion-script stack)"
+# }}}
+
+### Export lang pack for system {{{
+export LC_NUMERIC=en_US.UTF-8
+export LC_TIME=en_US.UTF-8
+export LC_COLLATE=en_US.UTF-8
+export LC_MONETARY=en_US.UTF-8
+export LC_MESSAGES=en_US.UTF-8
+#}}}
+
+### Exports for brew {{{
+export HOMEBREW_INSTALL_BADGE="☕️ 🐸"
+#}}}
+
+### Exports composer {{{
+export PATH="$PATH:$HOME/.composer/vendor/bin"
+#}}}

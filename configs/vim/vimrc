@@ -9,30 +9,55 @@ call vundle#begin()
 " Set plugins for installation
 Plugin 'gmarik/Vundle.vim'
 
-" Utility
-Plugin 'flazz/vim-colorschemes'
-Plugin 'ctrlpvim/ctrlp.vim'
-" Plugin 'editorconfig/editorconfig-vim'
-Plugin 'vim-airline/vim-airline'
-" Plugin 'Shougo/neocomplete.vim'
+" Plugin to help neovim with sudo
+" :w !sudo tee % > /dev/null trick does not work on neovim.
+" I get the error "sudo: no tty present and no askpass program specified"
+" Instead I need to run :w suda://% with this plugin installed
+Plugin 'lambdalisue/suda.vim'
 
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'scrooloose/nerdtree'
+" Utility
 Plugin 'Chiel92/vim-autoformat'
-Plugin 'godlygeek/tabular'
-Plugin 't9md/vim-choosewin'
-Plugin 'Shougo/vimproc.vim'
-Plugin 'thoughtbot/vim-rspec'
-" Plugin 'Valloric/YouCompleteMe'
-Plugin 'zxqfl/tabnine-vim'
-Plugin 'davidhalter/jedi-vim'
+if has('nvim')
+	Plugin 'Shougo/deoplete.nvim'
+	if has('win32') || has('win64')
+	  Plugin 'tbodt/deoplete-tabnine', { 'do': 'powershell.exe .\install.ps1' }
+	else
+	  Plugin 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+	endif
+else
+	Plugin 'Shougo/deoplete.nvim'
+	Plugin 'roxma/nvim-yarp'
+	Plugin 'roxma/vim-hug-neovim-rpc'
+endif
+Plugin 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 Plugin 'KabbAmine/zeavim.vim'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'Shougo/vimproc.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'godlygeek/tabular'
+Plugin 'scrooloose/nerdtree'
+Plugin 't9md/vim-choosewin'
+Plugin 'thoughtbot/vim-rspec'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'zxqfl/tabnine-vim'
+" Removed because there is no support for neovim
+"Plugin 'jeaye/color_coded'
 
 " Ctags
-Plugin 'majutsushi/tagbar'
-Plugin 'kberov/ctags'
+"Plugin 'majutsushi/tagbar'
+"Plugin 'kberov/ctags'
 "Plugin 'vim-php/tagbar-phpctags.vim'
 "Plugin 'ludovicchabant/vim-gutentags'
+"Plugin 'skywind3000/gutentags_plus'
 
 " Git
 Plugin 'Xuyuanp/nerdtree-git-plugin'
@@ -41,15 +66,20 @@ Plugin 'tpope/vim-fugitive'
 " General Programming
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'bkad/CamelCaseMotion'
-Plugin 'oblitum/rainbow'
+
+" Removed in favor of luchen1990/rainbow
+"Plugin 'oblitum/rainbow'
+Plugin 'luochen1990/rainbow'
 
 " Angular
 Plugin 'bdauria/angular-cli.vim'
 Plugin 'curist/vim-angular-template'
 
 " Linters
+Plugin 'dense-analysis/ale'
 " Plugin 'w0rp/ale'
 " Plugin 'maximbaz/lightline-ale'
+" Plugin 'itchyny/lightline.vim'
 
 " Java
 Plugin 'artur-shaik/vim-javacomplete2'
@@ -68,6 +98,12 @@ Plugin 'StanAngeloff/php.vim'
 Plugin 'ncm2/ncm2'
 Plugin 'phpactor/phpactor'
 Plugin 'phpactor/ncm2-phpactor'
+Plugin 'roxma/nvim-yarp'
+Plugin 'shawncplus/phpcomplete.vim'
+
+" Snippets
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 
 " TypeScript
 Plugin 'leafgarland/typescript-vim'
@@ -91,9 +127,9 @@ Plugin 'rizzatti/dash.vim'
 call vundle#end()
 
 " Set execution for pathogen
-execute pathogen#infect()
-filetype plugin indent on
-call pathogen#helptags()
+"execute pathogen#infect()
+"filetype plugin indent on
+"call pathogen#helptags()
 
 " }}}
 
@@ -101,6 +137,7 @@ call pathogen#helptags()
 
 " Settings for .editorconfig plugin
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+"let g:EditorConfig_core_mode = 'external_command'
 
 " Show lines above 80 character long
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
@@ -129,6 +166,11 @@ let g:syntastic_html_tidy_ignore_errors=[
       \   'discarding unexpected'
       \ ]
 let g:syntastic_html_tidy_ignore_warnings=['discarding unexpected']
+" Always open location window when errors occurs
+let g:syntastic_aggregate_errors = 1
+" Whenever I use buffer delete then close the location window
+"nnoremap <silent> <C-d> :lclose<CR>:bdelete<CR>
+cabbrev <silent> bd <C-r>=(getcmdtype()==#':' && getcmdpos()==1 ? 'lclose\|bdelete' : 'bd')<CR>
 
 " Set syntax highlight for conf files
 au BufNewFile,BufRead *.conf*,/etc/* setfiletype conf
@@ -155,7 +197,9 @@ set background=light
 
 " Ctrl settings
 let g:ctrlp_show_hidden=1
-let g:ctrlp_working_path_mode=0
+let g:ctrlp_root_markers = ['*']
+let g:ctrlp_switch_buffer = 'et'
+let g:ctrlp_working_path_mode='ra'
 let g:ctrlp_max_height=30
 
 " CtrlP -> override <C-o> to provide options for how to open files
@@ -166,8 +210,7 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/*.,*/.DS_Store
 
 " CtrlP -> use Ag for searching instead of VimScript
 " (might not work with ctrlp_show_hidden and ctrlp_custom_ignore)
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
+let g:ctrlp_user_command = 'find %s -type f' "ag %s -l --nocolor -g
 " CtrlP -> directories to ignore when fuzzy finding
 let g:ctrlp_custom_ignore = '\v[\/]((node_modules)|\.(git|svn|grunt|sass-cache))$'
 
@@ -234,9 +277,58 @@ autocmd FileType typescript,html call angular_cli#init()
 
 " Settings for you complete me plugin
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
-let g:ycm_python_binary_path = 'python'
-let g:ycm_rust_src_path = '~/.cargo/registry/src/'
-let g:EclimFileTypeValidate = 0
+"let g:ycm_clangd_args = [-background-index]
+" let g:ycm_python_binary_path = 'python'
+" let g:ycm_rust_src_path = '~/.cargo/registry/src/'
+" let g:EclimFileTypeValidate = 0
+
+let g:ycm_filetype_blacklist = { 'php': 1, 'javascript.jsx': 1, 'javascript': 1}
+
+let g:ycm_language_server = [
+  \   {
+  \     'name': 'yaml',
+  \     'cmdline': [ 'node', expand( '$HOME/.vim/lsp/yaml/node_modules/.bin/yaml-language-server' ), '--stdio' ],
+  \     'filetypes': [ 'yaml' ],
+  \   },
+  \   {
+  \     'name': 'php',
+  \     'cmdline': [ 'php', expand( '$HOME/.vim/lsp/php/vendor/bin/php-language-server.php' ) ],
+  \     'filetypes': [ 'php' ],
+  \   },
+  \   {
+  \     'name': 'json',
+  \     'cmdline': [ 'node', expand( '$HOME/.vim/lsp/json/node_modules/.bin/vscode-json-languageserver' ), '--stdio' ],
+  \     'filetypes': [ 'json' ],
+  \   },
+  \   {
+  \     'name': 'ruby',
+  \     'cmdline': [ expand( '$HOME/.vim/lsp/ruby/bin/solargraph' ), 'stdio' ],
+  \     'filetypes': [ 'ruby' ],
+  \   },
+  \   { 'name': 'kotlin',
+  \     'filetypes': [ 'kotlin' ],
+  \     'cmdline': [ expand( '$HOME/.vim/lsp/kotlin/server/build/install/server/bin/server' ) ],
+  \   },
+  \   { 'name': 'd',
+  \     'filetypes': [ 'd' ],
+  \     'cmdline': [ expand( '$HOME/.vim/lsp/d/serve-d' ) ],
+  \   },
+  \   { 'name': 'vue',
+  \     'filetypes': [ 'vue' ],
+  \     'cmdline': [ expand( '$HOME/.vim/lsp/vue/node_modules/.bin/vls' ) ]
+  \   },
+  \   { 'name': 'docker',
+  \     'filetypes': [ 'dockerfile' ],
+  \     'cmdline': [ expand( '$HOME/.vim/lsp/docker/node_modules/.bin/docker-langserver' ), '--stdio' ]
+  \   },
+  \   { 'name': 'vim',
+  \     'filetypes': [ 'vim' ],
+  \     'cmdline': [ expand( '$HOME/.vim/lsp/viml/node_modules/.bin/vim-language-server' ), '--stdio' ]
+  \   },
+  \ ]
+
+" Eclim settings
+let g:EclimCompletionMethod = 'omnifunc'
 
 " Configuration for php tags plugin
 let g:tagbar_phpctags_bin = '~/.vim/bundle/tagbar-phpctags.vim/bin'
@@ -273,16 +365,62 @@ let g:jsx_ext_required = 0
 " Configuration for rainbow
 let g:rainbow_active = 1
 
+" CTags settings
+" let g:Tlist_Ctags_Cmd='/usr/local/Cellar/ctags/5.8_1/bin/ctags'
+"
+" " enable gtags module
+" let g:gutentags_modules = ['ctags', 'gtags_cscope']
+"
+" " config project root markers.
+" let g:gutentags_project_root = ['.root']
+"
+" " generate datebases in my cache directory, prevent gtags files polluting my project
+" let g:gutentags_cache_dir = expand('~/.cache/tags')
+"
+" " change focus to quickfix window after search (optional).
+" let g:gutentags_plus_switch = 1
+"
+" " Remap default key settings
+" let g:gutentags_plus_nomap = 1
 
-let g:rainbow_load_separately = [
-    \ [ '*' , [['(', ')'], ['\[', '\]'], ['{', '}']] ],
-    \ [ '*.tex' , [['(', ')'], ['\[', '\]']] ],
-    \ [ '*.cpp' , [['(', ')'], ['\[', '\]'], ['{', '}']] ],
-    \ [ '*.{html,htm}' , [['(', ')'], ['\[', '\]'], ['{', '}'], ['<\a[^>]*>', '</[^>]*>']] ],
-    \ ]
+" Key mappings for gutentags
+noremap <silent> <leader>gs :GscopeFind s <C-R><C-W><cr>
+noremap <silent> <leader>gg :GscopeFind g <C-R><C-W><cr>
+noremap <silent> <leader>gc :GscopeFind c <C-R><C-W><cr>
+noremap <silent> <leader>gt :GscopeFind t <C-R><C-W><cr>
+noremap <silent> <leader>ge :GscopeFind e <C-R><C-W><cr>
+noremap <silent> <leader>gf :GscopeFind f <C-R>=expand("<cfile>")<cr><cr>
+noremap <silent> <leader>gi :GscopeFind i <C-R>=expand("<cfile>")<cr><cr>
+noremap <silent> <leader>gd :GscopeFind d <C-R><C-W><cr>
+noremap <silent> <leader>ga :GscopeFind a <C-R><C-W><cr>
 
-let g:rainbow_guifgs = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
-let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
+" Settings for ncm2-phpactor
+autocmd BufEnter * call ncm2#enable_for_buffer()
+set completeopt=noinsert,menuone,noselect
+
+" Settings for ultisnippets
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<leader><TAB>"
+let g:UltiSnipsListSnippets = "<leader><c-tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsSnippetsDir = "~/.config/nvim/UltiSnips"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+" Settings for phpcomplete
+let g:phpcomplete_relax_static_constraint = 1
+let g:phpcomplete_complete_for_unknown_classes = 1
+let g:phpcomplete_search_tags_for_variables = 1
+let g:phpcomplete_min_num_of_chars_for_namespace_completion = 1
+let g:phpcomplete_parse_docblock_comments = 1
+let g:phpcomplete_enhance_jump_to_definition = 1
+
+" Settings for deoplete
+let g:deoplete#enable_at_startup = 1
+
+let g:dash_activated = 0
 
 " }}}
 
@@ -415,6 +553,20 @@ fun! SetDiffColors()
   highlight DiffText   cterm=bold ctermfg=white ctermbg=DarkRed
 endfun
 
+let g:ulti_expand_or_jump_res = 0
+let g:UltiSnipsEnableSnipMate = 1
+
+
+function! ExpandSnippetOrReturn()
+let snippet = UltiSnips#ExpandSnippetOrJump()
+if g:ulti_expand_or_jump_res > 0
+return snippet
+else
+return "<CR>"
+endif
+endfunction
+
+inoremap pumvisible() ? "=ExpandSnippetOrReturn()" : "<CR>"
 " }}}
 
 " Mappings {{{
@@ -459,7 +611,7 @@ map <leader><cr> <C-W>j " Move to left window
 map <leader>= <C-W>k " Move to left window
 
 " Source vimrc
-map <leader>v :source ~/.vimrc<cr>
+map <leader>v :source ~/.config/nvim/init.vim<cr> :e <cr>
 map <leader>m :PluginInstall<cr>
 
 " Open ~/.vimrc
@@ -584,6 +736,9 @@ map <leader>qx :call JsxBeautify()<cr>
 
 " Mapping for vim-bbye
 map <Leader>q :Bdelete<cr>
+
+" Mapping for Dash
+nmap <silent> <leader>d <Plug>DashSearch
 " }}}
 
 " Templates {{{
@@ -1274,10 +1429,11 @@ let g:tagbar_type_xslt = {
 " Default settings {{{
 
 " Set specific color for file type
-filetype on
+"filetype plugin on
 
 " Sel terminal color
-set term=screen-256color
+" set term=screen-256color
+set t_Co=256
 
 " Set auto indent to keep current indentation
 set autoindent
@@ -1351,8 +1507,8 @@ set number
 " Turn on relative line numbers
 set relativenumber
 
-scriptencoding utf-8
-set encoding=utf-8
+" scriptencoding utf-8
+" set encoding=utf-8
 " Highlight tailing whitespace
 " Set list character types
 set list listchars=tab:▸\ ,eol:¬,trail:·
